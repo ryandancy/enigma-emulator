@@ -59,9 +59,11 @@ class Rotor:
     # self.turnovers is a list of positions at which to turn over
     self.turnovers = list(get_letter_pos(turnover) for turnover in turnovers)
     
+    self.reset()
+  
+  def reset(self):
     self.ring_pos = 0
     self.position = 0
-    
     self.just_turned_over = False
   
   def encrypt(self, char, turnover=False):
