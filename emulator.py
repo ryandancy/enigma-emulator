@@ -8,6 +8,15 @@ the Nazis during World War 2.
 
 from string import ascii_letters
 
+def get_letter_pos(char):
+  """
+  Get a letter's position in the alphabet. For example:
+      get_letter_pos('A') == 0
+      get_letter_pos('B') == 1
+      get_letter_pos('Z') == 25
+  """
+  return ord(char.upper()) - ord('A')
+
 class Rotor:
   """
   Emulates a rotor in an Enigma machine. The rotors each perform a substitution
@@ -48,8 +57,7 @@ class Rotor:
     self.cipher = list(''.join(cipher).upper())
     
     # self.turnovers is a list of positions at which to turn over
-    self.turnovers = list(ord(turnover.upper()) - ord('A')
-                          for turnover in turnovers)
+    self.turnovers = list(get_letter_pos(turnover) for turnover in turnovers)
     
     self.ring_pos = 0
     self.position = 0
@@ -57,7 +65,7 @@ class Rotor:
     self.just_turned_over = False
   
   def encrypt(self, char, turnover=False):
-    cipher_pos = ord(char.upper()) - ord('A') + self.position + self.ring_pos
+    cipher_pos = get_letter_pos(char) + self.position + self.ring_pos
     encrypted = self.cipher[cipher_pos % 26]
     
     if turnover:
@@ -83,9 +91,9 @@ class Reflector(Rotor):
     # An example reflector cipher: EJMZALYXVBWFCRQUONTSPIKHGD
     
     for letter_pos, letter in enumerate(cipher):
-      pos = ord(letter.upper()) - ord('A')
+      pos = get_letter_pos(letter)
       
-      if ord(cipher[pos].upper()) - ord('A') != letter_pos:
+      if get_letter_pos(cipher[pos]) != letter_pos:
         raise ValueError('Improper reflector cipher (got %s)' % cipher)
   
   def encrypt(self, char, turnover=False):
