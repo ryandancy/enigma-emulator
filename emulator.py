@@ -71,6 +71,27 @@ class Rotor:
   def should_turnover(self):
     return self.just_turned_over and self.position in self.turnovers
 
+class Reflector(Rotor):
+  
+  def __init__(self, cipher):
+    super().__init__(cipher, [])
+    
+    # Make sure the cipher's a proper reflector cipher
+    # For this, each letter's number's position in the cipher must be the letter
+    # with the position corresponding to the position of the original letter.
+    # For example, if B was in position 0, A would have to be in position 1.
+    # An example reflector cipher: EJMZALYXVBWFCRQUONTSPIKHGD
+    
+    for letter_pos, letter in enumerate(cipher):
+      pos = ord(letter.upper()) - ord('A')
+      
+      if ord(cipher[pos].upper()) - ord('A') != letter_pos:
+        raise ValueError('Improper reflector cipher (got %s)' % cipher)
+  
+  def encrypt(self, char, turnover=False):
+    # Ignore turnover, don't allow the reflector to turn over
+    super().encrypt(char, turnover=False)
+
 class Plugboard:
   """
   Emulates the plugboard of the Enigma machine, which allowed the operator to
