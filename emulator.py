@@ -81,8 +81,8 @@ class Plugboard:
   
   To swap two letters, call `swap()` with the two letters you wish to swap.
   Alternatively, call `swap_all()` to swap a list of characters as varargs.
-  To get the encoding of a letter through the plugboard, call `encode()` with
-  your letter and the encoding will be returned. To reset the plugboard, call
+  To get the encryption of a letter through the plugboard, call `encrypt()` with
+  your letter and the encryption will be returned. To reset the plugboard, call
   `reset()`.
   """
   
@@ -109,7 +109,7 @@ class Plugboard:
     for swap in zip(chars[::2], chars[1::2]):
       self.swap(swap)
   
-  def encode(self, char):
+  def encrypt(self, char):
     try:
       return self.swaps[char]
     except KeyError:
