@@ -6,6 +6,72 @@ This module provides the logic to emulate one of several enigma machines used by
 the Nazis during World War 2.
 """
 
+from string import ascii_letters
+
+# TODO prevent more invalid states
+
+class Rotor:
+  """
+  Emulates a rotor in an Enigma machine. The rotors each perform a substitution
+  cipher, which then rotates to change the cipher.
+  
+  To initialize the rotor, call `__init__()` with the cipher string and the list
+  of turnover positions, which can also be a string. To encrypt a character with
+  the rotor, call `encrypt()` with the character to encrypt and optionally
+  whether to rotate the rotor. To find out whether the next rotor in the chain
+  should be rotated, call `should_turnover()`.
+  """
+  
+  def __init__(self, cipher, turnovers):
+    """
+    Initialize this rotor.
+    
+    :param cipher: A 26-char long string representing the substitution cipher
+      this rotor performs, in alphabetical order. For example, the German
+      Railway enigma rotor I's cipher was "JGDQOXUSCAMIFRVTPNEWKBLZYH", which
+      means that A mapped to J, B to G, C to D, and so on.
+    :param turnovers: A character or list of characters that represent the
+      positions on the wheel (in plaintext) on which the rotor will rotate one
+      position forward. For example, if the turnover is "D", then the rotor will
+      rotate when going from D to E. A string longer than 1 character will be
+      interpreted as a list of characters.
+    """
+    
+    if len(cipher) != 26:
+      raise ValueError('Cipher must be 26 characters long (got %s)' % cipher)
+    if set(cipher) > ascii_letters:
+      raise ValueError('Cipher must be alphabetical (got %s)' % cipher)
+    
+    if any(len(turnover) > 1 for turnover in turnovers):
+      raise ValueError('If using a list, each turnover must be 1 character long'
+        ' (got %s)' % turnovers)
+    
+    self.cipher = list(''.join(cipher).upper())
+    
+    # self.turnovers is a list of positions at which to turn over
+    self.turnovers = list(ord(turnover.upper()) - ord('A')
+                          for turnover in turnovers)
+    
+    self.ring_pos = 0
+    self.position = 0
+    
+    self.just_turned_over = False
+  
+  def encrypt(self, char, turnover=False):
+    cipher_pos = ord(char.upper()) - ord('A') + self.position + self.ring_pos
+    encrypted = self.cipher[cipher_pos % 26]
+    
+    if turnover:
+      self.position += 1
+      self.position %= 26
+    
+    self.just_turned_over = turnover
+    
+    return encrypted
+  
+  def should_turnover(self):
+    return self.just_turned_over and self.position in self.turnovers
+
 class Plugboard:
   """
   Emulates the plugboard of the Enigma machine, which allowed the operator to
