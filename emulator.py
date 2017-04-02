@@ -19,7 +19,8 @@ class Rotor:
   of turnover positions, which can also be a string. To encrypt a character with
   the rotor, call `encrypt()` with the character to encrypt and optionally
   whether to rotate the rotor. To find out whether the next rotor in the chain
-  should be rotated, call `should_turnover()`.
+  should be rotated, call `should_turnover()`. To set the offset of the ring,
+  set `ring_pos`.
   """
   
   def __init__(self, cipher, turnovers):
