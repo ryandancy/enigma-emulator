@@ -8,8 +8,6 @@ the Nazis during World War 2.
 
 from string import ascii_letters
 
-# TODO prevent more invalid states
-
 class Rotor:
   """
   Emulates a rotor in an Enigma machine. The rotors each perform a substitution
@@ -96,6 +94,14 @@ class Plugboard:
     self.swaps = {}
   
   def swap(self, char1, char2):
+    if len(char1) > 1 or len(char2) > 1:
+      raise ValueError('char1 and char2 must be 1-char strings (got %s and %s)'
+        % (char1, char2))
+    
+    if char1 not in ascii_letters or char2 not in ascii_letters:
+      raise ValueError('char1 and char2 must be alphabetical (got %s and %s)'
+        % (char1, char2))
+    
     # Add char1 and char2 both to the dict
     char1, char2 = char1.upper(), char2.upper()
     if char1 not in self.swaps and char2 not in self.swaps:
