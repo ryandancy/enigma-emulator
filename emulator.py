@@ -86,7 +86,7 @@ class Rotor:
     return ascii_uppercase[alphabet_pos % 26]
   
   def should_turnover(self):
-    return self.just_turned_over and self.position in self.turnovers
+    return self.just_turned_over and (self.position - 1) % 26 in self.turnovers
 
 class Reflector(Rotor):
   
