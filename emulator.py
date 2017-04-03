@@ -151,3 +151,43 @@ class Plugboard:
       return self.swaps[char]
     except KeyError:
       return char
+
+class Enigma:
+  """
+  Emulates an Enigma machine used in WW2 by the Germans.
+  """
+  
+  def __init__(self, *args):
+    """
+    Initialize this Enigma machine emulator. If any varargs are specified, they
+    are passed to `configure()`.
+    """
+    
+    self.plugboard = Plugboard()
+    
+    if args:
+      self.configure(*args)
+    else:
+      self.configured = False
+  
+  def configure(self, rotors, rings, reflector, plugboard_swaps):
+    """
+    Configure this Enigma machine emulator with the specified key.
+    
+    :param rotors: a tuple of Rotors in the proper order.
+    :param rings: a tuple of ring positions (ints), the same size as `rotors`.
+    :param reflector: a Reflector for this Enigma.
+    :param plugboard_swaps: a list of 2-tuple swaps for this Enigma's Plugboard.
+    """
+    
+    self.rotors = rotors
+    
+    for rotor, ring_pos in zip(self.rotors, rings):
+      rotor.ring_pos = ring_pos
+    
+    self.reflector = reflector
+    
+    for char1, char2 in plugboard_swaps:
+      self.plugboard.swap(char1, char2)
+    
+    self.configured = True
