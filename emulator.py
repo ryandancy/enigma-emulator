@@ -65,6 +65,9 @@ class Rotor:
   
   def reset(self):
     self.ring_pos = 0
+    self.reset_position()
+  
+  def reset_position(self):
     self.position = 0
     self.just_turned_over = False
   
@@ -199,6 +202,11 @@ class Enigma:
       self.plugboard.swap(char1, char2)
     
     self.configured = True
+  
+  def reset(self):
+    """Reset all rotors to their default position to reuse the same key."""
+    for rotor in self.rotors:
+      rotor.reset_position()
   
   def encrypt(self, char):
     char = plugboard.encrypt(char)
