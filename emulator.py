@@ -6,7 +6,7 @@ This module provides the logic to emulate one of several enigma machines used by
 the Nazis during World War 2.
 """
 
-from string import ascii_letters
+from string import ascii_letters, ascii_uppercase
 
 def get_letter_pos(char):
   """
@@ -25,9 +25,11 @@ class Rotor:
   To initialize the rotor, call `__init__()` with the cipher string and the list
   of turnover positions, which can also be a string. To encrypt a character with
   the rotor, call `encrypt()` with the character to encrypt and optionally
-  whether to rotate the rotor. To find out whether the next rotor in the chain
-  should be rotated, call `should_turnover()`. To set the offset of the ring,
-  set `ring_pos`.
+  whether to rotate the rotor. To "reverse-encrypt" a character, meaning run the
+  character through the rotor the opposite way, call `reverse_encrypt()` with
+  the character. To find out whether the next rotor in the chain should be
+  rotated, call `should_turnover()`. To set the offset of the ring set
+  `ring_pos`.
   """
   
   def __init__(self, cipher, turnovers):
@@ -77,6 +79,11 @@ class Rotor:
     self.just_turned_over = turnover
     
     return encrypted
+  
+  def reverse_encrypt(self, char):
+    cipher_pos = self.cipher.index(char)
+    alphabet_pos = cipher_pos - self.position - self.ring_pos
+    return ascii_uppercase[alphabet_pos % 26]
   
   def should_turnover(self):
     return self.just_turned_over and self.position in self.turnovers
@@ -183,6 +190,7 @@ class Enigma:
     self.rotors = rotors
     
     for rotor, ring_pos in zip(self.rotors, rings):
+      rotor.reset()
       rotor.ring_pos = ring_pos
     
     self.reflector = reflector
@@ -191,3 +199,21 @@ class Enigma:
       self.plugboard.swap(char1, char2)
     
     self.configured = True
+  
+  def encrypt(self, char):
+    char = plugboard.encrypt(char)
+    
+    # Pass through rotors, turning over as necessary
+    turnover = True # turn over first rotor
+    for rotor in self.rotors:
+      char = rotor.encrypt(char, turnover)
+      turnover = rotor.should_turnover()
+    
+    # Pass through reflector
+    char = self.reflector.encrypt(char)
+    
+    # Pass through rotors backwards
+    for rotor in reversed(self.rotors):
+      char = rotor.reverse_encrypt(char)
+    
+    return char
