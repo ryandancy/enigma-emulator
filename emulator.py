@@ -225,16 +225,20 @@ class Enigma:
     if len(rotors) != 3:
       raise ValueError('`rotors` must be a 3-tuple in Enigma configuration '
                        '(use `rotor4` for a fourth, non-rotating rotor)')
+    if any(rotor.thin for rotor in rotors):
+      raise ValueError('Main rotors cannot be thin')
     
     # Fourth rotor *must* be used with a thin reflector for historical accuracy
-    # Also fourth rotor must also be thin
-    if rotor4 is not None:
+    # Also fourth rotor must also be thin + thin rotors can't be used otherwise
+    if rotor4 is None:
+      if reflector.thin:
+        raise ValueError('Thin reflector cannot be used if no fourth rotor')
+    else:
       if not rotor4.thin:
         raise ValueError('Fourth rotor, if present, must be thin')
       if not reflector.thin:
         raise ValueError('If a fourth rotor is present, the reflector '
                          'must be thin')
-      
       rotor4.reset()
       if len(rings) >= 4:
         rotor4.ring_pos = rings[3]
