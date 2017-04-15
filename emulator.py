@@ -262,7 +262,7 @@ class Enigma:
       rotor.reset_position()
   
   def encrypt(self, char):
-    char = plugboard.encrypt(char)
+    char = self.plugboard.encrypt(char)
     
     # Pass through rotors, turning over as necessary
     turnover = True # turn over first rotor
