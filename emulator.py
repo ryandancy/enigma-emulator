@@ -80,10 +80,6 @@ class Rotor:
     cipher_pos = get_letter_pos(char) + self.position + self.ring_pos
     encrypted = self.cipher[cipher_pos % 26]
     
-    if turnover:
-      self.position += 1
-      self.position %= 26
-    
     self.just_turned_over = turnover
     
     return encrypted
@@ -93,13 +89,17 @@ class Rotor:
     alphabet_pos = cipher_pos - self.position - self.ring_pos
     return ascii_uppercase[alphabet_pos % 26]
   
-  def should_turnover(self, rotors):
+  def should_turnover(self, rotors): # should the NEXT one turnover
     return (
       (self.just_turned_over and (self.position - 1) % 26 in self.turnovers) or
       # This is for double stepping; the 2nd rotor will turnover a second time
       # in a row if it's in its own turnover position.
       (rotors.index(self) == 0 and rotors[1].just_turned_over
         and rotors[1].position in rotors[1].turnovers))
+  
+  def turnover(self):
+    self.position += 1
+    self.position %= 26
 
 ROTOR_I = Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q')
 ROTOR_II = Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E')
@@ -265,9 +265,14 @@ class Enigma:
   def encrypt(self, char):
     char = self.plugboard.encrypt(char)
     
-    # Pass through rotors, turning over as necessary
+    # Pass through rotors, queuing to turnover as necessary
     turnover = True # turn over first rotor
+    rotors_to_turnover = []
+    
     for rotor in self.rotors:
+      if turnover:
+        rotors_to_turnover.append(rotor)
+      
       char = rotor.encrypt(char, turnover)
       turnover = rotor.should_turnover(self.rotors)
     
@@ -285,5 +290,9 @@ class Enigma:
     # Pass through rotors backwards
     for rotor in reversed(self.rotors):
       char = rotor.reverse_encrypt(char)
+    
+    # Do all the turnovers after encryption
+    for rotor in rotors_to_turnover:
+      rotor.turnover()
     
     return char
