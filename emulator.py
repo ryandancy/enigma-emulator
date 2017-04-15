@@ -51,7 +51,7 @@ class Rotor:
     
     if len(cipher) != 26:
       raise ValueError('Cipher must be 26 characters long (got %s)' % cipher)
-    if set(cipher) > ascii_letters:
+    if set(cipher) > set(ascii_letters):
       raise ValueError('Cipher must be alphabetical (got %s)' % cipher)
     
     if any(len(turnover) > 1 for turnover in turnovers):
