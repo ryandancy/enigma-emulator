@@ -15,7 +15,13 @@ def get_letter_pos(char):
       get_letter_pos('B') == 1
       get_letter_pos('Z') == 25
   """
-  return ord(char.upper()) - ord('A')
+  
+  if 'A' <= char <= 'Z':
+    return ord(char) - ord('A')
+  elif 'a' <= char <= 'z':
+    return ord(char) - ord('a')
+  else:
+    raise ValueError('%s is not alphabetical' % char)
 
 class Rotor:
   """
