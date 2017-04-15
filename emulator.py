@@ -287,6 +287,3 @@ class Enigma:
       char = rotor.reverse_encrypt(char)
     
     return char
-
-### TODO: TEST, REMOVE BEFORE COMMITTING ###
-enigma = Enigma((ROTOR_I, ROTOR_II, ROTOR_III), (0, 0, 0), REFLECTOR_A, [])
