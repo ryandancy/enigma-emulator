@@ -63,7 +63,8 @@ class Rotor:
     self.cipher = list(''.join(cipher).upper())
     
     # self.turnovers is a list of positions at which to turn over
-    self.turnovers = list(get_letter_pos(turnover) for turnover in turnovers)
+    self.turnovers = list(get_letter_pos(turnover.upper())
+                          for turnover in turnovers)
     
     self.reset()
   
@@ -100,6 +101,20 @@ class Rotor:
       (rotor.index(self) == 0 and rotors[1].just_turned_over
         and rotors[1].position in rotors[1].turnovers))
 
+ROTOR_I = Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q')
+ROTOR_II = Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E')
+ROTOR_III = Rotor('BDFHJLCPRTXVZNYEIWGAKMUSQO', 'V')
+
+ROTOR_IV = Rotor('ESOVPZJAYQUIRHXLNFTGKDCMWB', 'J')
+ROTOR_V = Rotor('VZBRGITYUPSDNHLXAWMJQOFECK', 'Z')
+
+ROTOR_VI = Rotor('JPGVOUMFYQBENHZRDKASXLICTW', ['Z', 'M'])
+ROTOR_VII = Rotor('NZJHGRCXMYSWBOUFAIVLPEKQDT', ['Z', 'M'])
+ROTOR_VIII = Rotor('FKQHTLXOCBJSPDZRAMEWNIUYGV', ['Z', 'M'])
+
+ROTOR_BETA = Rotor('LEYJVCNIXWPBQMDRTAKZGFUHOS', [], thin=True)
+ROTOR_GAMMA = Rotor('FSOKANUERHMBTIYCWLQPZXVGJD', [], thin=True)
+
 class Reflector(Rotor):
   
   def __init__(self, cipher, thin=False):
@@ -120,6 +135,13 @@ class Reflector(Rotor):
   def encrypt(self, char, turnover=False):
     # Ignore turnover, don't allow the reflector to turn over
     super().encrypt(char, turnover=False)
+
+REFLECTOR_A = Reflector('EJMZALYXVBWFCRQUONTSPIKHGD')
+REFLECTOR_B = Reflector('YRUHQSLDPXNGOKMIEBFZCWVJAT')
+REFLECTOR_C = Reflector('FVPJIAOYEDRZXWGCTKUQSBNMHL')
+
+REFLECTOR_B_THIN = Reflector('ENKQAUYWJICOPBLMDXZVFTHRGS', thin=True)
+REFLECTOR_C_THIN = Reflector('RDOBJNTKVEHMLFCWZAXGYIPSUQ', thin=True)
 
 class Plugboard:
   """
