@@ -32,7 +32,7 @@ class Rotor:
   `ring_pos`.
   """
   
-  def __init__(self, cipher, turnovers):
+  def __init__(self, cipher, turnovers, thin=False):
     """
     Initialize this rotor.
     
@@ -45,6 +45,8 @@ class Rotor:
       position forward. For example, if the turnover is "D", then the rotor will
       rotate when going from D to E. A string longer than 1 character will be
       interpreted as a list of characters.
+    :param thin: Whether the rotor is thin; i.e. it's a thin reflector or rotors
+      Beta or Gamma.
     """
     
     if len(cipher) != 26:
@@ -55,6 +57,8 @@ class Rotor:
     if any(len(turnover) > 1 for turnover in turnovers):
       raise ValueError('If using a list, each turnover must be 1 character long'
         ' (got %s)' % turnovers)
+    
+    self.thin = thin
     
     self.cipher = list(''.join(cipher).upper())
     
@@ -93,8 +97,8 @@ class Rotor:
 
 class Reflector(Rotor):
   
-  def __init__(self, cipher):
-    super().__init__(cipher, [])
+  def __init__(self, cipher, thin=False):
+    super().__init__(cipher, [], thin=thin)
     
     # Make sure the cipher's a proper reflector cipher
     # For this, each letter's number's position in the cipher must be the letter
@@ -180,15 +184,33 @@ class Enigma:
     else:
       self.configured = False
   
-  def configure(self, rotors, rings, reflector, plugboard_swaps):
+  def configure(self, rotors, rings, reflector, plugboard_swaps, rotor4=None):
     """
     Configure this Enigma machine emulator with the specified key.
     
-    :param rotors: a tuple of Rotors in the proper order.
+    :param rotors: a 3-tuple of Rotors in the proper order.
     :param rings: a tuple of ring positions (ints), the same size as `rotors`.
     :param reflector: a Reflector for this Enigma.
     :param plugboard_swaps: a list of 2-tuple swaps for this Enigma's Plugboard.
+    :param rotor4: a fourth Rotor that does not rotate.
     """
+    
+    if len(rotors) != 3:
+      raise ValueError('`rotors` must be a 3-tuple in Enigma configuration '
+                       '(use `rotor4` for a fourth, non-rotating rotor)')
+    
+    # Fourth rotor *must* be used with a thin reflector for historical accuracy
+    # Also fourth rotor must also be thin
+    if rotor4 is not None:
+      if not rotor4.thin:
+        raise ValueError('Fourth rotor, if present, must be thin')
+      if not reflector.thin:
+        raise ValueError('If a fourth rotor is present, the reflector '
+                         'must be thin')
+      
+      rotor4.reset()
+      if len(rings) >= 4:
+        rotor4.ring_pos = rings[3]
     
     self.rotors = rotors
     
@@ -217,8 +239,16 @@ class Enigma:
       char = rotor.encrypt(char, turnover)
       turnover = rotor.should_turnover()
     
+    # Pass through fourth rotor, if present, which does not turnover
+    if rotor4 is not None:
+      char = rotor.encrypt(char)
+    
     # Pass through reflector
     char = self.reflector.encrypt(char)
+    
+    # Pass through fourth rotor in reverse, if present
+    if rotor4 is not None:
+      char = rotor.reverse_encrypt(char)
     
     # Pass through rotors backwards
     for rotor in reversed(self.rotors):
