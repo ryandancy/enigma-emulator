@@ -98,7 +98,7 @@ class Rotor:
       (self.just_turned_over and (self.position - 1) % 26 in self.turnovers) or
       # This is for double stepping; the 2nd rotor will turnover a second time
       # in a row if it's in its own turnover position.
-      (rotor.index(self) == 0 and rotors[1].just_turned_over
+      (rotors.index(self) == 0 and rotors[1].just_turned_over
         and rotors[1].position in rotors[1].turnovers))
 
 ROTOR_I = Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q')
@@ -134,7 +134,7 @@ class Reflector(Rotor):
   
   def encrypt(self, char, turnover=False):
     # Ignore turnover, don't allow the reflector to turn over
-    super().encrypt(char, turnover=False)
+    return super().encrypt(char, turnover=False)
 
 REFLECTOR_A = Reflector('EJMZALYXVBWFCRQUONTSPIKHGD')
 REFLECTOR_B = Reflector('YRUHQSLDPXNGOKMIEBFZCWVJAT')
@@ -244,6 +244,7 @@ class Enigma:
         rotor4.ring_pos = rings[3]
     
     self.rotors = rotors
+    self.rotor4 = rotor4
     
     for rotor, ring_pos in zip(self.rotors, rings):
       rotor.reset()
@@ -271,14 +272,14 @@ class Enigma:
       turnover = rotor.should_turnover(self.rotors)
     
     # Pass through fourth rotor, if present, which does not turnover
-    if rotor4 is not None:
+    if self.rotor4 is not None:
       char = rotor.encrypt(char)
     
     # Pass through reflector
     char = self.reflector.encrypt(char)
     
     # Pass through fourth rotor in reverse, if present
-    if rotor4 is not None:
+    if self.rotor4 is not None:
       char = rotor.reverse_encrypt(char)
     
     # Pass through rotors backwards
@@ -286,3 +287,6 @@ class Enigma:
       char = rotor.reverse_encrypt(char)
     
     return char
+
+### TODO: TEST, REMOVE BEFORE COMMITTING ###
+enigma = Enigma((ROTOR_I, ROTOR_II, ROTOR_III), (0, 0, 0), REFLECTOR_A, [])
