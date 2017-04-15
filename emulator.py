@@ -92,8 +92,13 @@ class Rotor:
     alphabet_pos = cipher_pos - self.position - self.ring_pos
     return ascii_uppercase[alphabet_pos % 26]
   
-  def should_turnover(self):
-    return self.just_turned_over and (self.position - 1) % 26 in self.turnovers
+  def should_turnover(self, rotors):
+    return (
+      (self.just_turned_over and (self.position - 1) % 26 in self.turnovers) or
+      # This is for double stepping; the 2nd rotor will turnover a second time
+      # in a row if it's in its own turnover position.
+      (rotor.index(self) == 0 and rotors[1].just_turned_over
+        and rotors[1].position in rotors[1].turnovers))
 
 class Reflector(Rotor):
   
@@ -237,7 +242,7 @@ class Enigma:
     turnover = True # turn over first rotor
     for rotor in self.rotors:
       char = rotor.encrypt(char, turnover)
-      turnover = rotor.should_turnover()
+      turnover = rotor.should_turnover(self.rotors)
     
     # Pass through fourth rotor, if present, which does not turnover
     if rotor4 is not None:
