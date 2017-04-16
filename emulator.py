@@ -23,6 +23,9 @@ def get_letter_pos(char):
   else:
     raise ValueError('%s is not alphabetical' % char)
 
+def pos_to_letter(pos):
+  return ascii_uppercase[pos]
+
 class Rotor:
   """
   Emulates a rotor in an Enigma machine. The rotors each perform a substitution
@@ -279,7 +282,8 @@ class Enigma:
       if turnover:
         rotors_to_turnover.append(rotor)
       
-      char = rotor.encrypt(char, turnover)
+      char = pos_to_letter((get_letter_pos(rotor.encrypt(char, turnover))
+          - rotor.position) % 26)
       turnover = rotor.should_turnover(self.rotors)
     
     # Pass through fourth rotor, if present, which does not turnover
@@ -295,7 +299,8 @@ class Enigma:
     
     # Pass through rotors backwards
     for rotor in reversed(self.rotors):
-      char = rotor.reverse_encrypt(char)
+      char = rotor.reverse_encrypt(pos_to_letter((get_letter_pos(char)
+          + rotor.position) % 26))
     
     # Run back through plugboard
     char = self.plugboard.encrypt(char)
