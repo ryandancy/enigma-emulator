@@ -100,7 +100,7 @@ class Rotor:
   
   def should_turnover(self, rotors): # should the NEXT one turnover
     return (
-      (self.just_turned_over and (self.position - 1) % 26 in self.turnovers) or
+      (self.position - 1) % 26 in self.turnovers or
       # This is for double stepping; the 2nd rotor will turnover a second time
       # in a row if it's in its own turnover position.
       (rotors.index(self) == 0 and rotors[1].just_turned_over
@@ -109,6 +109,7 @@ class Rotor:
   def turnover(self):
     self.position += 1
     self.position %= 26
+    self.just_turned_over = True
 
 ROTOR_I = Rotor('EKMFLGDQVZNTOWYHXUSPAIBRCJ', 'Q')
 ROTOR_II = Rotor('AJDKSIRUXBLHWTMCQGZNPYFVOE', 'E')
@@ -141,9 +142,8 @@ class Reflector(Rotor):
       if get_letter_pos(cipher[pos]) != letter_pos:
         raise ValueError('Improper reflector cipher (got %s)' % cipher)
   
-  def encrypt(self, char, turnover=False):
-    # Ignore turnover, don't allow the reflector to turn over
-    return super().encrypt(char, turnover=False)
+  def turnover(self): # don't allow reflectors to turn over
+    pass
 
 REFLECTOR_A = Reflector('EJMZALYXVBWFCRQUONTSPIKHGD')
 REFLECTOR_B = Reflector('YRUHQSLDPXNGOKMIEBFZCWVJAT')
@@ -272,19 +272,26 @@ class Enigma:
       rotor.reset_position()
   
   def encrypt(self, char):
-    char = self.plugboard.encrypt(char)
-    
-    # Pass through rotors, queuing to turnover as necessary
+    # Do turnovers before anything else
     turnover = True # turn over first rotor
-    rotors_to_turnover = []
+    rotors_turned_over = []
     
     for rotor in self.rotors:
       if turnover:
-        rotors_to_turnover.append(rotor)
-      
-      char = pos_to_letter((get_letter_pos(rotor.encrypt(char, turnover))
-          - rotor.position) % 26)
-      turnover = rotor.should_turnover(self.rotors)
+        rotors_turned_over.append(rotor)
+        rotor.turnover()
+        turnover = rotor.should_turnover(self.rotors)
+      else:
+        break
+    
+    # Pass through plugboard
+    char = self.plugboard.encrypt(char)
+    
+    # Pass through rotors
+    for rotor in self.rotors:
+      turnover = rotor in rotors_turned_over
+      char = pos_to_letter((
+        get_letter_pos(rotor.encrypt(char, turnover)) - rotor.position) % 26)
     
     # Pass through fourth rotor, if present, which does not turnover
     if self.rotor4 is not None:
@@ -305,8 +312,8 @@ class Enigma:
     # Run back through plugboard
     char = self.plugboard.encrypt(char)
     
-    # Do all the turnovers after encryption
-    for rotor in rotors_to_turnover:
-      rotor.turnover()
-    
     return char
+
+enigma = Enigma((ROTOR_III, ROTOR_II, ROTOR_I), (0, 0, 0), REFLECTOR_B, [])
+ROTOR_II.position = 3
+ROTOR_III.position = 21
