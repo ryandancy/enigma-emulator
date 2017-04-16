@@ -297,6 +297,9 @@ class Enigma:
     for rotor in reversed(self.rotors):
       char = rotor.reverse_encrypt(char)
     
+    # Run back through plugboard
+    char = self.plugboard.encrypt(char)
+    
     # Do all the turnovers after encryption
     for rotor in rotors_to_turnover:
       rotor.turnover()
