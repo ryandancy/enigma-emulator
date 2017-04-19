@@ -1,323 +1,350 @@
 #:kivy 1.9.1
 
 <EmulatorGui>:
+  plugboard: plugboard
   orientation: 'vertical'
   Label:
     text: 'Enigma Emulator'
   Plugboard:
-    center: 0, 0
+    id: plugboard
 
 <Plugboard>:
   size: 50, 260
   Label:
-    id: A
+    id: pbA
     text: 'A'
-    pos: 0, 45
+    pos: 0 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: B
+    id: pbB
     text: 'B'
-    pos: 10, 45
+    pos: 10 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: C
+    id: pbC
     text: 'C'
-    pos: 20, 45
+    pos: 20 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: D
+    id: pbD
     text: 'D'
-    pos: 30, 45
+    pos: 30 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: E
+    id: pbE
     text: 'E'
-    pos: 40, 45
+    pos: 40 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: F
+    id: pbF
     text: 'F'
-    pos: 50, 45
+    pos: 50 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: G
+    id: pbG
     text: 'G'
-    pos: 60, 45
+    pos: 60 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: H
+    id: pbH
     text: 'H'
-    pos: 70, 45
+    pos: 70 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: I
+    id: pbI
     text: 'I'
-    pos: 80, 45
+    pos: 80 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: J
+    id: pbJ
     text: 'J'
-    pos: 90, 45
+    pos: 90 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: K
+    id: pbK
     text: 'K'
-    pos: 100, 45
+    pos: 100 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: L
+    id: pbL
     text: 'L'
-    pos: 110, 45
+    pos: 110 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: M
+    id: pbM
     text: 'M'
-    pos: 120, 45
+    pos: 120 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: N
+    id: pbN
     text: 'N'
-    pos: 130, 45
+    pos: 130 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: O
+    id: pbO
     text: 'O'
-    pos: 140, 45
+    pos: 140 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: P
+    id: pbP
     text: 'P'
-    pos: 150, 45
+    pos: 150 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: Q
+    id: pbQ
     text: 'Q'
-    pos: 160, 45
+    pos: 160 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: R
+    id: pbR
     text: 'R'
-    pos: 170, 45
+    pos: 170 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: S
+    id: pbS
     text: 'S'
-    pos: 180, 45
+    pos: 180 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: T
+    id: pbT
     text: 'T'
-    pos: 190, 45
+    pos: 190 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: U
+    id: pbU
     text: 'U'
-    pos: 200, 45
+    pos: 200 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: V
+    id: pbV
     text: 'V'
-    pos: 210, 45
+    pos: 210 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: W
+    id: pbW
     text: 'W'
-    pos: 220, 45
+    pos: 220 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: X
+    id: pbX
     text: 'X'
-    pos: 230, 45
+    pos: 230 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: Y
+    id: pbY
     text: 'Y'
-    pos: 240, 45
+    pos: 240 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
-    id: Z
+    id: pbZ
     text: 'Z'
-    pos: 250, 45
+    pos: 250 + self.parent.pos[0], 45 + self.parent.pos[1]
     font_size: 10
   Label:
+    id: pbA_btm
     text: 'A'
-    pos: 0, 0
+    pos: 0 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['A']].center_x + self.parent.pos[0], root.ids[root.swaps['A']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['A']].center_x, root.ids['pb' + root.swaps['A']].center_y - 7]
   Label:
+    id: pbB_btm
     text: 'B'
-    pos: 10, 0
+    pos: 10 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['B']].center_x + self.parent.pos[0], root.ids[root.swaps['B']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['B']].center_x, root.ids['pb' + root.swaps['B']].center_y - 7]
   Label:
+    id: pbC_btm
     text: 'C'
-    pos: 20, 0
+    pos: 20 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['C']].center_x + self.parent.pos[0], root.ids[root.swaps['C']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['C']].center_x, root.ids['pb' + root.swaps['C']].center_y - 7]
   Label:
+    id: pbD_btm
     text: 'D'
-    pos: 30, 0
+    pos: 30 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['D']].center_x + self.parent.pos[0], root.ids[root.swaps['D']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['D']].center_x, root.ids['pb' + root.swaps['D']].center_y - 7]
   Label:
+    id: pbE_btm
     text: 'E'
-    pos: 40, 0
+    pos: 40 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['E']].center_x + self.parent.pos[0], root.ids[root.swaps['E']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['E']].center_x, root.ids['pb' + root.swaps['E']].center_y - 7]
   Label:
+    id: pbF_btm
     text: 'F'
-    pos: 50, 0
+    pos: 50 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['F']].center_x + self.parent.pos[0], root.ids[root.swaps['F']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['F']].center_x, root.ids['pb' + root.swaps['F']].center_y - 7]
   Label:
+    id: pbG_btm
     text: 'G'
-    pos: 60, 0
+    pos: 60 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['G']].center_x + self.parent.pos[0], root.ids[root.swaps['G']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['G']].center_x, root.ids['pb' + root.swaps['G']].center_y - 7]
   Label:
+    id: pbH_btm
     text: 'H'
-    pos: 70, 0
+    pos: 70 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['H']].center_x + self.parent.pos[0], root.ids[root.swaps['H']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['H']].center_x, root.ids['pb' + root.swaps['H']].center_y - 7]
   Label:
+    id: pbI_btm
     text: 'I'
-    pos: 80, 0
+    pos: 80 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['I']].center_x + self.parent.pos[0], root.ids[root.swaps['I']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['I']].center_x, root.ids['pb' + root.swaps['I']].center_y - 7]
   Label:
+    id: pbJ_btm
     text: 'J'
-    pos: 90, 0
+    pos: 90 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['J']].center_x + self.parent.pos[0], root.ids[root.swaps['J']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['J']].center_x, root.ids['pb' + root.swaps['J']].center_y - 7]
   Label:
+    id: pbK_btm
     text: 'K'
-    pos: 100, 0
+    pos: 100 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['K']].center_x + self.parent.pos[0], root.ids[root.swaps['K']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['K']].center_x, root.ids['pb' + root.swaps['K']].center_y - 7]
   Label:
+    id: pbL_btm
     text: 'L'
-    pos: 110, 0
+    pos: 110 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['L']].center_x + self.parent.pos[0], root.ids[root.swaps['L']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['L']].center_x, root.ids['pb' + root.swaps['L']].center_y - 7]
   Label:
+    id: pbM_btm
     text: 'M'
-    pos: 120, 0
+    pos: 120 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['M']].center_x + self.parent.pos[0], root.ids[root.swaps['M']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['M']].center_x, root.ids['pb' + root.swaps['M']].center_y - 7]
   Label:
+    id: pbN_btm
     text: 'N'
-    pos: 130, 0
+    pos: 130 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['N']].center_x + self.parent.pos[0], root.ids[root.swaps['N']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['N']].center_x, root.ids['pb' + root.swaps['N']].center_y - 7]
   Label:
+    id: pbO_btm
     text: 'O'
-    pos: 140, 0
+    pos: 140 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['O']].center_x + self.parent.pos[0], root.ids[root.swaps['O']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['O']].center_x, root.ids['pb' + root.swaps['O']].center_y - 7]
   Label:
+    id: pbP_btm
     text: 'P'
-    pos: 150, 0
+    pos: 150 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['P']].center_x + self.parent.pos[0], root.ids[root.swaps['P']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['P']].center_x, root.ids['pb' + root.swaps['P']].center_y - 7]
   Label:
+    id: pbQ_btm
     text: 'Q'
-    pos: 160, 0
+    pos: 160 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['Q']].center_x + self.parent.pos[0], root.ids[root.swaps['Q']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Q']].center_x, root.ids['pb' + root.swaps['Q']].center_y - 7]
   Label:
+    id: pbR_btm
     text: 'R'
-    pos: 170, 0
+    pos: 170 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['R']].center_x + self.parent.pos[0], root.ids[root.swaps['R']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['R']].center_x, root.ids['pb' + root.swaps['R']].center_y - 7]
   Label:
+    id: pbS_btm
     text: 'S'
-    pos: 180, 0
+    pos: 180 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['S']].center_x + self.parent.pos[0], root.ids[root.swaps['S']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['S']].center_x, root.ids['pb' + root.swaps['S']].center_y - 7]
   Label:
+    id: pbT_btm
     text: 'T'
-    pos: 190, 0
+    pos: 190 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['T']].center_x + self.parent.pos[0], root.ids[root.swaps['T']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['T']].center_x, root.ids['pb' + root.swaps['T']].center_y - 7]
   Label:
+    id: pbU_btm
     text: 'U'
-    pos: 200, 0
+    pos: 200 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['U']].center_x + self.parent.pos[0], root.ids[root.swaps['U']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['U']].center_x, root.ids['pb' + root.swaps['U']].center_y - 7]
   Label:
+    id: pbV_btm
     text: 'V'
-    pos: 210, 0
+    pos: 210 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['V']].center_x + self.parent.pos[0], root.ids[root.swaps['V']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['V']].center_x, root.ids['pb' + root.swaps['V']].center_y - 7]
   Label:
+    id: pbW_btm
     text: 'W'
-    pos: 220, 0
+    pos: 220 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['W']].center_x + self.parent.pos[0], root.ids[root.swaps['W']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['W']].center_x, root.ids['pb' + root.swaps['W']].center_y - 7]
   Label:
+    id: pbX_btm
     text: 'X'
-    pos: 230, 0
+    pos: 230 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['X']].center_x + self.parent.pos[0], root.ids[root.swaps['X']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['X']].center_x, root.ids['pb' + root.swaps['X']].center_y - 7]
   Label:
+    id: pbY_btm
     text: 'Y'
-    pos: 240, 0
+    pos: 240 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['Y']].center_x + self.parent.pos[0], root.ids[root.swaps['Y']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Y']].center_x, root.ids['pb' + root.swaps['Y']].center_y - 7]
   Label:
+    id: pbZ_btm
     text: 'Z'
-    pos: 250, 0
+    pos: 250 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
     canvas:
       Line:
-        points: [self.center_x + self.parent.pos[0], self.center_y + self.parent.pos[1] + 7, root.ids[root.swaps['Z']].center_x + self.parent.pos[0], root.ids[root.swaps['Z']].center_y + self.parent.pos[1] - 7]
+        points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Z']].center_x, root.ids['pb' + root.swaps['Z']].center_y - 7]
