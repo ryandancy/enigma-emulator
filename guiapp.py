@@ -13,7 +13,6 @@ from kivy.uix.widget import Widget
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import DictProperty, ObjectProperty
 from kivy.graphics import Color, Triangle, Rectangle, Line
-from kivy.clock import Clock
 
 import emulator as em
 
@@ -55,18 +54,12 @@ class Plugboard(Widget):
                    other_label.center_x, other_label.center_y - 7])
 
 class EmulatorGui(BoxLayout):
-  
-  plugboard = ObjectProperty(None)
-  
-  def activate_pb(self, dt):
-    self.plugboard.activate('A')
+  pass
 
 class EmulatorApp(App):
   
   def build(self):
-    gui = EmulatorGui()
-    Clock.schedule_once(gui.activate_pb, 0.5)
-    return gui
+    return EmulatorGui()
 
 if __name__ == '__main__':
   EmulatorApp().run()
