@@ -25,6 +25,19 @@ class Plugboard(Widget):
     'V': 'V', 'W': 'W', 'X': 'X', 'Y': 'Y', 'Z': 'Z'
   })
   
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    enigma.set_callbacks(
+      plugboard=self.callback_in, plugboard_back=self.callback_out)
+  
+  def callback_in(self, char_in, char_out, swaps):
+    self.swaps.update(swaps)
+    self.activate(char_in, in_=True)
+  
+  def callback_out(self, char_in, char_out, swaps):
+    self.swaps.update(swaps)
+    self.activate(char_out, in_=False)
+  
   def activate(self, char, in_=True): # in_ is whether the signal is in or out
     # Find bottom label to draw on
     label = self.ids['pb%s_btm' % char]

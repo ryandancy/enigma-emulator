@@ -356,7 +356,7 @@ class Enigma:
         self.callbacks['rotor4_back'](old_char, char, self.rotor4.cipher)
     
     # Pass through rotors backwards
-    for i, rotor in reversed(enumerate(self.rotors)):
+    for i, rotor in reversed(list(enumerate(self.rotors))):
       old_char = char
       char = rotor.reverse_encrypt(pos_to_letter((get_letter_pos(char)
           + rotor.position) % 26))
