@@ -62,4 +62,6 @@ class EmulatorApp(App):
     return EmulatorGui()
 
 if __name__ == '__main__':
+  enigma = em.Enigma(
+    (em.ROTOR_III, em.ROTOR_II, em.ROTOR_I), (0, 0, 0), em.REFLECTOR_A, [])
   EmulatorApp().run()

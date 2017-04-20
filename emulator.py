@@ -215,6 +215,12 @@ class Enigma:
     
     self.plugboard = Plugboard()
     
+    self.callbacks = {
+      'plugboard': None, 'rotors': (None, None, None), 'rotor4': None,
+      'reflector': None, 'rotor4_back': None, 'rotors_back': (None, None, None),
+      'plugboard_back': None
+    }
+    
     if args:
       self.configure(*args)
     else:
@@ -266,6 +272,29 @@ class Enigma:
     
     self.configured = True
   
+  def set_callbacks(self, **kwargs):
+    """
+    Set the callbacks for this Enigma.
+    
+    Arguments are as follows:
+    - `plugboard`: `char_in: char, char_out: char, swaps: dict[char->char]`
+    - each of `rotors`: `char_in: char, char_out: char, adjusted_cipher: string`
+    - `rotor4`: `char_in: char, char_out: char, cipher: string`
+    - `reflector`: `char_in: char, char_out: char, cipher: string`
+    - `rotor4_back`: `char_in: char, char_out: char, cipher: string`
+    - each of `rotors_back`: `char_in: char, char_out: char, adj_cipher: string`
+    - `plugboard_back`: `char_in: char, char_out: char, swaps: dict[char->char]`
+    """
+    
+    self.callbacks.update(kwargs)
+  
+  def reset_callbacks(self):
+    for key in self.callbacks.keys():
+      if isinstance(self.callbacks[key], tuple):
+        self.callbacks[key] = (None, None, None)
+      else:
+        self.callbacks[key] = None
+  
   def reset(self):
     """Reset all rotors to their default position to reuse the same key."""
     for rotor in self.rotors:
@@ -285,32 +314,64 @@ class Enigma:
         break
     
     # Pass through plugboard
+    old_char = char
     char = self.plugboard.encrypt(char)
     
+    if self.callbacks['plugboard'] is not None:
+      self.callbacks['plugboard'](old_char, char, self.plugboard.swaps)
+    
     # Pass through rotors
-    for rotor in self.rotors:
+    for i, rotor in enumerate(self.rotors):
       turnover = rotor in rotors_turned_over
+      old_char = char
       char = pos_to_letter((
         get_letter_pos(rotor.encrypt(char, turnover)) - rotor.position) % 26)
+      
+      if self.callbacks['rotors'][i] is not None:
+        cipher = rotor.cipher
+        adj_cipher = cipher[rotor.cipher_pos:] + cipher[:rotor.cipher_pos]
+        self.callbacks['rotors'][i](old_char, char, adj_cipher)
     
     # Pass through fourth rotor, if present, which does not turnover
     if self.rotor4 is not None:
+      old_char = char
       char = rotor.encrypt(char)
+      
+      if self.callbacks['rotor4'] is not None:
+        self.callbacks['rotor4'](old_char, char, self.rotor4.cipher)
     
     # Pass through reflector
+    old_char = char
     char = self.reflector.encrypt(char)
+    
+    if self.callbacks['reflector'] is not None:
+      self.callbacks['reflector'](old_char, char, self.reflector.cipher)
     
     # Pass through fourth rotor in reverse, if present
     if self.rotor4 is not None:
+      old_char = char
       char = rotor.reverse_encrypt(char)
+      
+      if self.callbacks['rotor4_back'] is not None:
+        self.callbacks['rotor4_back'](old_char, char, self.rotor4.cipher)
     
     # Pass through rotors backwards
-    for rotor in reversed(self.rotors):
+    for i, rotor in reversed(enumerate(self.rotors)):
+      old_char = char
       char = rotor.reverse_encrypt(pos_to_letter((get_letter_pos(char)
           + rotor.position) % 26))
+      
+      if self.callbacks['rotors_back'][i] is not None:
+        cipher = rotor.cipher
+        adj_cipher = cipher[rotor.cipher_pos:] + cipher[:rotor.cipher_pos]
+        self.callbacks['rotors_back'][i](old_char, char, adj_cipher)
     
     # Run back through plugboard
+    old_char = char
     char = self.plugboard.encrypt(char)
+    
+    if self.callbacks['plugboard_back'] is not None:
+      self.callbacks['plugboard_back'](old_char, char, self.plugboard.swaps)
     
     return char
 
