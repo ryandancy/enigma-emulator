@@ -286,6 +286,24 @@ class Enigma:
     - `plugboard_back`: `char_in: char, char_out: char, swaps: dict[char->char]`
     """
     
+    if 'rotors' in kwargs and not all(rotor is not None for rotor in
+        kwargs['rotors']):
+      for i, rotor in enumerate(kwargs['rotors']):
+        if rotor is None:
+          # TODO this is just... bleh
+          kwargs['rotors'] = list(kwargs['rotors'])
+          kwargs['rotors'][i] = self.callbacks['rotors'][i]
+          kwargs['rotors'] = tuple(kwargs['rotors'])
+    
+    if 'rotors_back' in kwargs and not all(rotor is not None for rotor in
+        kwargs['rotors_back']):
+      for i, rotor in enumerate(kwargs['rotors']):
+        if rotor is None:
+          # TODO such kludge much wow
+          kwargs['rotors_back'] = list(kwargs['rotors_back'])
+          kwargs['rotors_back'][i] = self.callbacks['rotors_back'][i]
+          kwargs['rotors_back'] = tuple(kwargs['rotors_back'])
+    
     self.callbacks.update(kwargs)
   
   def reset_callbacks(self):
@@ -329,7 +347,7 @@ class Enigma:
       
       if self.callbacks['rotors'][i] is not None:
         cipher = rotor.cipher
-        adj_cipher = cipher[rotor.cipher_pos:] + cipher[:rotor.cipher_pos]
+        adj_cipher = cipher[rotor.position:] + cipher[:rotor.position]
         self.callbacks['rotors'][i](old_char, char, adj_cipher)
     
     # Pass through fourth rotor, if present, which does not turnover
@@ -363,7 +381,7 @@ class Enigma:
       
       if self.callbacks['rotors_back'][i] is not None:
         cipher = rotor.cipher
-        adj_cipher = cipher[rotor.cipher_pos:] + cipher[:rotor.cipher_pos]
+        adj_cipher = cipher[rotor.position:] + cipher[:rotor.position]
         self.callbacks['rotors_back'][i](old_char, char, adj_cipher)
     
     # Run back through plugboard

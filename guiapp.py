@@ -10,11 +10,52 @@ kivy.require('1.9.1')
 
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import DictProperty, ObjectProperty
+from kivy.properties import DictProperty, ObjectProperty, NumericProperty, \
+  StringProperty
 from kivy.graphics import Color, Triangle, Rectangle, Line
+from kivy.clock import Clock
+
+from string import ascii_uppercase as alphabet
 
 import emulator as em
+
+class Rotor(Widget):
+  
+  cipher = DictProperty({
+    'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D', 'E': 'E', 'F': 'F', 'G': 'G',
+    'H': 'H', 'I': 'I', 'J': 'J', 'K': 'K', 'L': 'L', 'M': 'M', 'N': 'N',
+    'O': 'O', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T', 'U': 'U',
+    'V': 'V', 'W': 'W', 'X': 'X', 'Y': 'Y', 'Z': 'Z'
+  })
+  
+  rotor_num = NumericProperty(-1)
+  
+  char_in = StringProperty('')
+  char_out = StringProperty('')
+  
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+  
+  def on_rotor_num(self, instance, rotor_num):
+    self.cipher.update({alpha: char for alpha, char in
+                        zip(alphabet, enigma.rotors[rotor_num].cipher)})
+    
+    rotor_cbs, rotor_back_cbs = [None, None, None], [None, None, None]
+    rotor_cbs[rotor_num] = self.callback_in
+    rotor_back_cbs[rotor_num] = self.callback_out
+    
+    enigma.set_callbacks(rotors=tuple(rotor_cbs),
+                         rotors_back=tuple(rotor_back_cbs))
+  
+  def callback_in(self, char_in, char_out, cipher):
+    self.char_in = char_in
+    self.cipher.update({alpha: char for alpha, char in zip(alphabet, cipher)})
+  
+  def callback_out(self, char_in, char_out, cipher):
+    self.char_out = char_out
+    self.cipher.update({alpha: char for alpha, char in zip(alphabet, cipher)})
 
 class Plugboard(Widget):
   
@@ -67,14 +108,25 @@ class Plugboard(Widget):
                    other_label.center_x, other_label.center_y - 7])
 
 class EmulatorGui(BoxLayout):
-  pass
+  
+  rotor0 = ObjectProperty(None)
+  rotor1 = ObjectProperty(None)
+  rotor2 = ObjectProperty(None)
+  
+  def on_build(self):
+    self.rotor0.rotor_num = 0
+    self.rotor1.rotor_num = 1
+    self.rotor2.rotor_num = 2
 
 class EmulatorApp(App):
   
   def build(self):
-    return EmulatorGui()
+    gui = EmulatorGui()
+    gui.on_build()
+    return gui
 
 if __name__ == '__main__':
   enigma = em.Enigma(
     (em.ROTOR_III, em.ROTOR_II, em.ROTOR_I), (0, 0, 0), em.REFLECTOR_A, [])
+  Clock.schedule_once(lambda dt: enigma.encrypt('A'))
   EmulatorApp().run()

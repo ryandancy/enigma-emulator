@@ -2,14 +2,31 @@
 
 <EmulatorGui>:
   plugboard: plugboard
+  rotor0: rotor0
+  rotor1: rotor1
+  rotor2: rotor2
   orientation: 'vertical'
   Label:
     text: 'Enigma Emulator'
-  Plugboard:
-    id: plugboard
+  RelativeLayout:
+    Rotor:
+      size_hint: (None, None)
+      pos_hint: {'x': 0.1, 'y': 0.4}
+      id: rotor0
+    Rotor:
+      size_hint: (None, None)
+      pos_hint: {'x': 0.4, 'y': 0.4}
+      id: rotor1
+    Rotor:
+      size_hint: (None, None)
+      pos_hint: {'x': 0.7, 'y': 0.4}
+      id: rotor2
+    Plugboard:
+      size_hint: (None, None)
+      id: plugboard
 
 <Plugboard>:
-  size: 50, 260
+  size: 260, 50
   Label:
     id: pbA
     text: 'A'
@@ -348,3 +365,396 @@
     canvas:
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Z']].center_x, root.ids['pb' + root.swaps['Z']].center_y - 7]
+
+<Rotor>:
+  size: 50, 260
+  Label:
+    id: rrA
+    text: 'A'
+    pos: 40 + self.parent.pos[0], 250 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrB
+    text: 'B'
+    pos: 40 + self.parent.pos[0], 240 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrC
+    text: 'C'
+    pos: 40 + self.parent.pos[0], 230 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrD
+    text: 'D'
+    pos: 40 + self.parent.pos[0], 220 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrE
+    text: 'E'
+    pos: 40 + self.parent.pos[0], 210 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrF
+    text: 'F'
+    pos: 40 + self.parent.pos[0], 200 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrG
+    text: 'G'
+    pos: 40 + self.parent.pos[0], 190 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrH
+    text: 'H'
+    pos: 40 + self.parent.pos[0], 180 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrI
+    text: 'I'
+    pos: 40 + self.parent.pos[0], 170 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrJ
+    text: 'J'
+    pos: 40 + self.parent.pos[0], 160 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrK
+    text: 'K'
+    pos: 40 + self.parent.pos[0], 150 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrL
+    text: 'L'
+    pos: 40 + self.parent.pos[0], 140 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrM
+    text: 'M'
+    pos: 40 + self.parent.pos[0], 130 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrN
+    text: 'N'
+    pos: 40 + self.parent.pos[0], 120 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrO
+    text: 'O'
+    pos: 40 + self.parent.pos[0], 110 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrP
+    text: 'P'
+    pos: 40 + self.parent.pos[0], 100 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrQ
+    text: 'Q'
+    pos: 40 + self.parent.pos[0], 90 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrR
+    text: 'R'
+    pos: 40 + self.parent.pos[0], 80 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrS
+    text: 'S'
+    pos: 40 + self.parent.pos[0], 70 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrT
+    text: 'T'
+    pos: 40 + self.parent.pos[0], 60 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrU
+    text: 'U'
+    pos: 40 + self.parent.pos[0], 50 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrV
+    text: 'V'
+    pos: 40 + self.parent.pos[0], 40 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrW
+    text: 'W'
+    pos: 40 + self.parent.pos[0], 30 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrX
+    text: 'X'
+    pos: 40 + self.parent.pos[0], 20 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrY
+    text: 'Y'
+    pos: 40 + self.parent.pos[0], 10 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rrZ
+    text: 'Z'
+    pos: 40 + self.parent.pos[0], 0 + self.parent.pos[1]
+    font_size: 10
+  Label:
+    id: rlA
+    text: 'A'
+    pos: 0 + self.parent.pos[0], 250 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'A' else (1, 0, 0) if self.parent.char_out == 'A' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['A']].center_x - 7, root.ids['rr' + root.cipher['A']].center_y]
+  Label:
+    id: rlB
+    text: 'B'
+    pos: 0 + self.parent.pos[0], 240 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'B' else (1, 0, 0) if self.parent.char_out == 'B' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['B']].center_x - 7, root.ids['rr' + root.cipher['B']].center_y]
+  Label:
+    id: rlC
+    text: 'C'
+    pos: 0 + self.parent.pos[0], 230 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'C' else (1, 0, 0) if self.parent.char_out == 'C' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['C']].center_x - 7, root.ids['rr' + root.cipher['C']].center_y]
+  Label:
+    id: rlD
+    text: 'D'
+    pos: 0 + self.parent.pos[0], 220 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'D' else (1, 0, 0) if self.parent.char_out == 'D' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['D']].center_x - 7, root.ids['rr' + root.cipher['D']].center_y]
+  Label:
+    id: rlE
+    text: 'E'
+    pos: 0 + self.parent.pos[0], 210 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'E' else (1, 0, 0) if self.parent.char_out == 'E' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['E']].center_x - 7, root.ids['rr' + root.cipher['E']].center_y]
+  Label:
+    id: rlF
+    text: 'F'
+    pos: 0 + self.parent.pos[0], 200 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'F' else (1, 0, 0) if self.parent.char_out == 'F' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['F']].center_x - 7, root.ids['rr' + root.cipher['F']].center_y]
+  Label:
+    id: rlG
+    text: 'G'
+    pos: 0 + self.parent.pos[0], 190 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'G' else (1, 0, 0) if self.parent.char_out == 'G' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['G']].center_x - 7, root.ids['rr' + root.cipher['G']].center_y]
+  Label:
+    id: rlH
+    text: 'H'
+    pos: 0 + self.parent.pos[0], 180 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'H' else (1, 0, 0) if self.parent.char_out == 'H' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['H']].center_x - 7, root.ids['rr' + root.cipher['H']].center_y]
+  Label:
+    id: rlI
+    text: 'I'
+    pos: 0 + self.parent.pos[0], 170 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'I' else (1, 0, 0) if self.parent.char_out == 'I' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['I']].center_x - 7, root.ids['rr' + root.cipher['I']].center_y]
+  Label:
+    id: rlJ
+    text: 'J'
+    pos: 0 + self.parent.pos[0], 160 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'J' else (1, 0, 0) if self.parent.char_out == 'J' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['J']].center_x - 7, root.ids['rr' + root.cipher['J']].center_y]
+  Label:
+    id: rlK
+    text: 'K'
+    pos: 0 + self.parent.pos[0], 150 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'K' else (1, 0, 0) if self.parent.char_out == 'K' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['K']].center_x - 7, root.ids['rr' + root.cipher['K']].center_y]
+  Label:
+    id: rlL
+    text: 'L'
+    pos: 0 + self.parent.pos[0], 140 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'L' else (1, 0, 0) if self.parent.char_out == 'L' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['L']].center_x - 7, root.ids['rr' + root.cipher['L']].center_y]
+  Label:
+    id: rlM
+    text: 'M'
+    pos: 0 + self.parent.pos[0], 130 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'M' else (1, 0, 0) if self.parent.char_out == 'M' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['M']].center_x - 7, root.ids['rr' + root.cipher['M']].center_y]
+  Label:
+    id: rlN
+    text: 'N'
+    pos: 0 + self.parent.pos[0], 120 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'N' else (1, 0, 0) if self.parent.char_out == 'N' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['N']].center_x - 7, root.ids['rr' + root.cipher['N']].center_y]
+  Label:
+    id: rlO
+    text: 'O'
+    pos: 0 + self.parent.pos[0], 110 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'O' else (1, 0, 0) if self.parent.char_out == 'O' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['O']].center_x - 7, root.ids['rr' + root.cipher['O']].center_y]
+  Label:
+    id: rlP
+    text: 'P'
+    pos: 0 + self.parent.pos[0], 100 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'P' else (1, 0, 0) if self.parent.char_out == 'P' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['P']].center_x - 7, root.ids['rr' + root.cipher['P']].center_y]
+  Label:
+    id: rlQ
+    text: 'Q'
+    pos: 0 + self.parent.pos[0], 90 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'Q' else (1, 0, 0) if self.parent.char_out == 'Q' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['Q']].center_x - 7, root.ids['rr' + root.cipher['Q']].center_y]
+  Label:
+    id: rlR
+    text: 'R'
+    pos: 0 + self.parent.pos[0], 80 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'R' else (1, 0, 0) if self.parent.char_out == 'R' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['R']].center_x - 7, root.ids['rr' + root.cipher['R']].center_y]
+  Label:
+    id: rlS
+    text: 'S'
+    pos: 0 + self.parent.pos[0], 70 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'S' else (1, 0, 0) if self.parent.char_out == 'S' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['S']].center_x - 7, root.ids['rr' + root.cipher['S']].center_y]
+  Label:
+    id: rlT
+    text: 'T'
+    pos: 0 + self.parent.pos[0], 60 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'T' else (1, 0, 0) if self.parent.char_out == 'T' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['T']].center_x - 7, root.ids['rr' + root.cipher['T']].center_y]
+  Label:
+    id: rlU
+    text: 'U'
+    pos: 0 + self.parent.pos[0], 50 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'U' else (1, 0, 0) if self.parent.char_out == 'U' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['U']].center_x - 7, root.ids['rr' + root.cipher['U']].center_y]
+  Label:
+    id: rlV
+    text: 'V'
+    pos: 0 + self.parent.pos[0], 40 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'V' else (1, 0, 0) if self.parent.char_out == 'V' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['V']].center_x - 7, root.ids['rr' + root.cipher['V']].center_y]
+  Label:
+    id: rlW
+    text: 'W'
+    pos: 0 + self.parent.pos[0], 30 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'W' else (1, 0, 0) if self.parent.char_out == 'W' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['W']].center_x - 7, root.ids['rr' + root.cipher['W']].center_y]
+  Label:
+    id: rlX
+    text: 'X'
+    pos: 0 + self.parent.pos[0], 20 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'X' else (1, 0, 0) if self.parent.char_out == 'X' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['X']].center_x - 7, root.ids['rr' + root.cipher['X']].center_y]
+  Label:
+    id: rlY
+    text: 'Y'
+    pos: 0 + self.parent.pos[0], 10 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'Y' else (1, 0, 0) if self.parent.char_out == 'Y' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['Y']].center_x - 7, root.ids['rr' + root.cipher['Y']].center_y]
+  Label:
+    id: rlZ
+    text: 'Z'
+    pos: 0 + self.parent.pos[0], 0 + self.parent.pos[1]
+    font_size: 10
+    canvas:
+      Color:
+        rgb: (0, 1, 0) if self.parent.char_in == 'Z' else (1, 0, 0) if self.parent.char_out == 'Z' else (0.3, 0.3, 0.3)
+      Line:
+        points: [self.center_x + 7, self.center_y, root.ids['rr' + root.cipher['Z']].center_x - 7, root.ids['rr' + root.cipher['Z']].center_y]
