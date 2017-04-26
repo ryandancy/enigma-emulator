@@ -297,7 +297,7 @@ class Enigma:
     
     if 'rotors_back' in kwargs and not all(rotor is not None for rotor in
         kwargs['rotors_back']):
-      for i, rotor in enumerate(kwargs['rotors']):
+      for i, rotor in enumerate(kwargs['rotors_back']):
         if rotor is None:
           # TODO such kludge much wow
           kwargs['rotors_back'] = list(kwargs['rotors_back'])
