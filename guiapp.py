@@ -31,6 +31,7 @@ class Rotor(Widget):
   })
   
   rotor_num = NumericProperty(-1)
+  rotor_pos = NumericProperty(0)
   
   char_in = StringProperty('')
   char_out = StringProperty('')
@@ -49,13 +50,13 @@ class Rotor(Widget):
     enigma.set_callbacks(rotors=tuple(rotor_cbs),
                          rotors_back=tuple(rotor_back_cbs))
   
-  def callback_in(self, char_in, char_out, cipher):
+  def callback_in(self, char_in, char_out, cipher, pos):
     self.char_in = char_in
-    self.cipher.update({alpha: char for alpha, char in zip(alphabet, cipher)})
+    self.rotor_pos = pos
   
-  def callback_out(self, char_in, char_out, cipher):
+  def callback_out(self, char_in, char_out, cipher, pos):
     self.char_out = char_out
-    self.cipher.update({alpha: char for alpha, char in zip(alphabet, cipher)})
+    self.rotor_pos = pos
 
 class Plugboard(Widget):
   

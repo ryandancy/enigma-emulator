@@ -278,11 +278,13 @@ class Enigma:
     
     Arguments are as follows:
     - `plugboard`: `char_in: char, char_out: char, swaps: dict[char->char]`
-    - each of `rotors`: `char_in: char, char_out: char, adjusted_cipher: string`
+    - each of `rotors`: `char_in: char, char_out: char, adjusted_cipher: string,
+        pos: int`
     - `rotor4`: `char_in: char, char_out: char, cipher: string`
     - `reflector`: `char_in: char, char_out: char, cipher: string`
     - `rotor4_back`: `char_in: char, char_out: char, cipher: string`
-    - each of `rotors_back`: `char_in: char, char_out: char, adj_cipher: string`
+    - each of `rotors_back`: `char_in: char, char_out: char, adj_cipher: string,
+        pos: int`
     - `plugboard_back`: `char_in: char, char_out: char, swaps: dict[char->char]`
     """
     
@@ -348,7 +350,7 @@ class Enigma:
       if self.callbacks['rotors'][i] is not None:
         cipher = rotor.cipher
         adj_cipher = cipher[rotor.position:] + cipher[:rotor.position]
-        self.callbacks['rotors'][i](old_char, char, adj_cipher)
+        self.callbacks['rotors'][i](old_char, char, adj_cipher, rotor.position)
     
     # Pass through fourth rotor, if present, which does not turnover
     if self.rotor4 is not None:
@@ -382,7 +384,8 @@ class Enigma:
       if self.callbacks['rotors_back'][i] is not None:
         cipher = rotor.cipher
         adj_cipher = cipher[rotor.position:] + cipher[:rotor.position]
-        self.callbacks['rotors_back'][i](old_char, char, adj_cipher)
+        self.callbacks['rotors_back'][i](old_char, char, adj_cipher,
+          rotor.position)
     
     # Run back through plugboard
     old_char = char
