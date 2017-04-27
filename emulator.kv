@@ -1,11 +1,16 @@
 #:kivy 1.9.1
 
 <EmulatorGui>:
+  gui: gui
+  id: gui
+  
   plugboard: plugboard
   rotor0: rotor0
   rotor1: rotor1
   rotor2: rotor2
+  
   orientation: 'vertical'
+  
   Label:
     text: 'Enigma Emulator'
   RelativeLayout:
@@ -608,131 +613,261 @@
     text: chr(self.parent.rotor_pos + ord('A'))
     pos: 40 + self.parent.pos[0], 250 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'A' else (1, 0, 0, 1) if self.parent.char_out == 'A' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrB
     text: chr((self.parent.rotor_pos + 1) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 240 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'B' else (1, 0, 0, 1) if self.parent.char_out == 'B' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrC
     text: chr((self.parent.rotor_pos + 2) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 230 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'C' else (1, 0, 0, 1) if self.parent.char_out == 'C' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrD
     text: chr((self.parent.rotor_pos + 3) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 220 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'D' else (1, 0, 0, 1) if self.parent.char_out == 'D' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrE
     text: chr((self.parent.rotor_pos + 4) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 210 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'E' else (1, 0, 0, 1) if self.parent.char_out == 'E' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrF
     text: chr((self.parent.rotor_pos + 5) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 200 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'F' else (1, 0, 0, 1) if self.parent.char_out == 'F' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrG
     text: chr((self.parent.rotor_pos + 6) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 190 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'G' else (1, 0, 0, 1) if self.parent.char_out == 'G' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrH
     text: chr((self.parent.rotor_pos + 7) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 180 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'H' else (1, 0, 0, 1) if self.parent.char_out == 'H' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrI
     text: chr((self.parent.rotor_pos + 8) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 170 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'I' else (1, 0, 0, 1) if self.parent.char_out == 'I' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrJ
     text: chr((self.parent.rotor_pos + 9) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 160 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'J' else (1, 0, 0, 1) if self.parent.char_out == 'J' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrK
     text: chr((self.parent.rotor_pos + 10) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 150 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'K' else (1, 0, 0, 1) if self.parent.char_out == 'K' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrL
     text: chr((self.parent.rotor_pos + 11) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 140 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'L' else (1, 0, 0, 1) if self.parent.char_out == 'L' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrM
     text: chr((self.parent.rotor_pos + 12) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 130 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'M' else (1, 0, 0, 1) if self.parent.char_out == 'M' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrN
     text: chr((self.parent.rotor_pos + 13) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 120 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'N' else (1, 0, 0, 1) if self.parent.char_out == 'N' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrO
     text: chr((self.parent.rotor_pos + 14) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 110 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'O' else (1, 0, 0, 1) if self.parent.char_out == 'O' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrP
     text: chr((self.parent.rotor_pos + 15) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 100 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'P' else (1, 0, 0, 1) if self.parent.char_out == 'P' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrQ
     text: chr((self.parent.rotor_pos + 16) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 90 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'Q' else (1, 0, 0, 1) if self.parent.char_out == 'Q' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrR
     text: chr((self.parent.rotor_pos + 17) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 80 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'R' else (1, 0, 0, 1) if self.parent.char_out == 'R' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrS
     text: chr((self.parent.rotor_pos + 18) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 70 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'S' else (1, 0, 0, 1) if self.parent.char_out == 'S' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrT
     text: chr((self.parent.rotor_pos + 19) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 60 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'T' else (1, 0, 0, 1) if self.parent.char_out == 'T' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrU
     text: chr((self.parent.rotor_pos + 20) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 50 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'U' else (1, 0, 0, 1) if self.parent.char_out == 'U' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrV
     text: chr((self.parent.rotor_pos + 21) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 40 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'V' else (1, 0, 0, 1) if self.parent.char_out == 'V' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrW
     text: chr((self.parent.rotor_pos + 22) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 30 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'W' else (1, 0, 0, 1) if self.parent.char_out == 'W' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrX
     text: chr((self.parent.rotor_pos + 23) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 20 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'X' else (1, 0, 0, 1) if self.parent.char_out == 'X' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrY
     text: chr((self.parent.rotor_pos + 24) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 10 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'Y' else (1, 0, 0, 1) if self.parent.char_out == 'Y' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rrZ
     text: chr((self.parent.rotor_pos + 25) % 26 + ord('A'))
     pos: 40 + self.parent.pos[0], 0 + self.parent.pos[1]
     font_size: 10
+    canvas:
+      Color:
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'Z' else (1, 0, 0, 1) if self.parent.char_out == 'Z' else (0.3, 0.3, 0.3, 1)
+      Line:
+        points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
     id: rlA
     text: 'A'

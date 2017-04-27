@@ -85,6 +85,8 @@ class Plugboard(Widget):
 
 class EmulatorGui(BoxLayout):
   
+  gui = ObjectProperty(None)
+  
   rotor0 = ObjectProperty(None)
   rotor1 = ObjectProperty(None)
   rotor2 = ObjectProperty(None)
