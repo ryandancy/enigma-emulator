@@ -9,6 +9,7 @@ import kivy
 kivy.require('1.9.1')
 
 from kivy.app import App
+from kivy.core.window import Window
 from kivy.uix.widget import Widget
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
@@ -17,7 +18,7 @@ from kivy.properties import DictProperty, ObjectProperty, NumericProperty, \
 from kivy.graphics import Color, Triangle, Rectangle, Line
 from kivy.clock import Clock
 
-from string import ascii_uppercase as alphabet
+from string import ascii_uppercase as alphabet, ascii_lowercase as alpha_lower
 
 import emulator as em
 
@@ -91,6 +92,29 @@ class EmulatorGui(BoxLayout):
   rotor1 = ObjectProperty(None)
   rotor2 = ObjectProperty(None)
   
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+    self._keyboard.bind(on_key_down=self._on_keyboard_down)
+  
+  def _keyboard_closed(self):
+    self._keyboard.unbind(on_key_down=self._on_keyboard_down)
+    self._keyboard = None
+  
+  def _on_keyboard_down(self, keyboard, keycode, text, modifiers):
+    if keycode[1] in alphabet:
+      char = keycode[1]
+    elif keycode[1] in alpha_lower:
+      char = keycode[1].upper()
+    else:
+      # Ignore non-alphabetic characters
+      return
+    
+    self.ids.plaintext.text += char
+    
+    encrypted = enigma.encrypt(char)
+    self.ids.ciphertext.text += encrypted
+  
   def on_build(self):
     self.rotor0.rotor_num = 0
     self.rotor1.rotor_num = 1
@@ -106,5 +130,4 @@ class EmulatorApp(App):
 if __name__ == '__main__':
   enigma = em.Enigma(
     (em.ROTOR_III, em.ROTOR_II, em.ROTOR_I), (0, 0, 0), em.REFLECTOR_A, [])
-  Clock.schedule_once(lambda dt: enigma.encrypt('A'))
   EmulatorApp().run()

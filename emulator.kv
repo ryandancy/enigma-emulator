@@ -13,23 +13,42 @@
   
   Label:
     text: 'Enigma Emulator'
+    size_hint: (1, 0.1)
   RelativeLayout:
     Rotor:
       size_hint: (None, None)
-      pos_hint: {'x': 0.1, 'y': 0.4}
+      pos_hint: {'x': 0.1, 'y': 0.3}
       id: rotor0
     Rotor:
       size_hint: (None, None)
-      pos_hint: {'x': 0.4, 'y': 0.4}
+      pos_hint: {'x': 0.4, 'y': 0.3}
       id: rotor1
     Rotor:
       size_hint: (None, None)
-      pos_hint: {'x': 0.7, 'y': 0.4}
+      pos_hint: {'x': 0.7, 'y': 0.3}
       id: rotor2
     Plugboard:
       size_hint: (None, None)
-      pos_hint: {'x': 0, 'y': 0.1}
+      pos_hint: {'x': 0, 'y': 0}
       id: plugboard
+  PlaintextLabel:
+    id: plaintext
+  CiphertextLabel:
+    id: ciphertext
+
+<PlaintextLabel@Label>:
+  size_hint: (1, 0.075)
+  font_name: 'RobotoMono-Regular'
+  text_size: self.size
+  halign: 'left'
+  text: 'plaintext: '
+
+<CiphertextLabel@Label>:
+  size_hint: (1, 0.075)
+  font_name: 'RobotoMono-Regular'
+  text_size: self.size
+  halign: 'left'
+  text: 'ciphertext: '
 
 <Plugboard>:
   size: 260, 50
