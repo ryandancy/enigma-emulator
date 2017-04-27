@@ -119,6 +119,19 @@ class EmulatorGui(BoxLayout):
     self.rotor0.rotor_num = 0
     self.rotor1.rotor_num = 1
     self.rotor2.rotor_num = 2
+  
+  def reset(self):
+    enigma.reset()
+    self.ids.plaintext.text = 'plaintext: '
+    self.ids.ciphertext.text = 'ciphertext: '
+    
+    for rotor in [self.rotor0, self.rotor1, self.rotor2]:
+      rotor.rotor_pos = 0
+      rotor.char_in = ''
+      rotor.char_out = ''
+    
+    self.plugboard.char_in = ''
+    self.plugboard.char_out = ''
 
 class EmulatorApp(App):
   
