@@ -44,6 +44,8 @@
       id: swaps_input
     RotorsInput:
       id: rotors_input
+    ReflectorInput:
+      id: reflector_input
 
 <PlaintextLabel@Label>:
   size_hint: (1, 0.075)
@@ -84,6 +86,15 @@
   valign: 'middle'
   multiline: False
   on_text_validate: self.parent.parent.update_rotors(self.text)
+
+<ReflectorInput@TextInput>:
+  font_name: 'RobotoMono-Regular'
+  hint_text: 'Reflector'
+  text: 'B'
+  halign: 'left'
+  valign: 'middle'
+  multiline: False
+  on_text_validate: self.parent.parent.update_reflector(self.text)
 
 <Plugboard>:
   size: 260, 50

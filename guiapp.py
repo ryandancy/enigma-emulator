@@ -34,6 +34,12 @@ ROTOR_NAMES = {
   'VIII': em.ROTOR_VIII
 }
 
+REFLECTOR_NAMES = {
+  'A': em.REFLECTOR_A,
+  'B': em.REFLECTOR_B,
+  'C': em.REFLECTOR_C
+}
+
 class Rotor(Widget):
   
   cipher = DictProperty({
@@ -243,6 +249,31 @@ class EmulatorGui(BoxLayout):
       # Update the rotors in the frontend
       for rotor in [self.rotor0, self.rotor1, self.rotor2]:
         rotor.update()
+    
+    finally:
+      # Reopen the actual Enigma input
+      self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+      self._keyboard.bind(on_key_down=self._on_keyboard_down)
+  
+  def update_reflector(self, reflector_str):
+    try:
+      reflector = REFLECTOR_NAMES[reflector_str]
+    
+    except KeyError as e:
+      # Highlight the box in red
+      self.ids.reflector_input.background_color = [1, 0.3, 0.3, 1]
+      print('caught:')
+      print(e)
+    
+    else:
+      # Clear any highlighting
+      self.ids.reflector_input.background_color = [1, 1, 1, 1]
+      
+      # Update the backend reflector
+      enigma.reflector = reflector
+      
+      # Update the frontend reflector
+      # TODO a frontend reflector
     
     finally:
       # Reopen the actual Enigma input
