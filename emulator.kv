@@ -36,10 +36,12 @@
   CiphertextLabel:
     id: ciphertext
   BoxLayout:
-    orientation: 'vertical'
-    size_hint: (1, 0.05)
+    orientation: 'horizontal'
+    size_hint: (1, 0.075)
     ResetButton:
       id: reset_btn
+    SwapsInput:
+      id: swaps_input
 
 <PlaintextLabel@Label>:
   size_hint: (1, 0.075)
@@ -56,12 +58,21 @@
   text: 'ciphertext: '
 
 <ResetButton@Button>:
-  size_hint: (0.1, 0.075)
   font_name: 'RobotoMono-Regular'
   text: 'Reset'
   text_size: self.size
   halign: 'center'
+  valign: 'middle'
   on_press: self.parent.parent.reset()
+
+<SwapsInput@TextInput>:
+  font_name: 'RobotoMono-Regular'
+  hint_text: 'Swaps e.g. "(\'A\', \'B\'), (\'C\', \'D\')"'
+  text_size: self.size
+  halign: 'left'
+  valign: 'middle'
+  multiline: False
+  on_text_validate: self.parent.parent.ids.plugboard.update_swaps(self.text)
 
 <Plugboard>:
   size: 260, 50

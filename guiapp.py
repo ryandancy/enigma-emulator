@@ -19,6 +19,7 @@ from kivy.graphics import Color, Triangle, Rectangle, Line
 from kivy.clock import Clock
 
 from string import ascii_uppercase as alphabet, ascii_lowercase as alpha_lower
+import ast
 
 import emulator as em
 
@@ -83,6 +84,61 @@ class Plugboard(Widget):
   def callback_out(self, char_in, char_out, swaps):
     self.swaps.update(swaps)
     self.char_out = char_out
+  
+  def update_swaps(self, swaps_str):
+    try:
+      if not swaps_str.endswith(','):
+        swaps_str += ','
+      
+      if swaps_str == ',':
+        swaps_str = '()'
+      
+      swaps_pairs = ast.literal_eval(swaps_str)
+      
+      # Make sure it's a tuple
+      if not isinstance(swaps_pairs, tuple):
+        raise ValueError('not a tuple')
+      
+      # Make sure each pair is a 2-tuple of 1-length strings
+      if len(swaps_pairs) > 0 and not all(
+                isinstance(pair, tuple) and len(pair) == 2
+                and isinstance(pair[0], str) and isinstance(pair[1], str)
+                and len(pair[0]) == len(pair[1]) == 1
+              for pair in swaps_pairs):
+        print(swaps_pairs)
+        raise ValueError('not tuple of 2-tuples of 1-length strings')
+      
+      # Make sure there's no duplicate chars
+      chars_used = []
+      for pair in swaps_pairs:
+        for char in pair:
+          if char in chars_used:
+            raise ValueError('duplicates')
+          chars_used.append(char)
+    
+    except ValueError as e:
+      # Highlight the box in red
+      self.parent.parent.ids.swaps_input.background_color = [1, 0.5, 0.5, 1]
+      print('caught:')
+      print(e)
+    
+    else:
+      # Clear any highlighting
+      self.parent.parent.ids.swaps_input.background_color = [1, 1, 1, 1]
+      
+      # Update swaps
+      enigma.plugboard.reset()
+      for char0, char1 in swaps_pairs:
+        enigma.plugboard.swap(char0, char1)
+      
+      self.swaps = {char: char for char in alphabet}
+      self.swaps.update(enigma.plugboard.swaps)
+    
+    finally:
+      # Reopen the actual Enigma input
+      gui = self.parent.parent
+      gui._keyboard = Window.request_keyboard(gui._keyboard_closed, gui)
+      gui._keyboard.bind(on_key_down=gui._on_keyboard_down)
 
 class EmulatorGui(BoxLayout):
   
