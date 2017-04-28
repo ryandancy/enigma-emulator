@@ -336,6 +336,7 @@ class Enigma:
     # Pass through plugboard
     old_char = char
     char = self.plugboard.encrypt(char)
+    print(old_char, '->', char, 'plugboard')
     
     if self.callbacks['plugboard'] is not None:
       self.callbacks['plugboard'](old_char, char, self.plugboard.swaps)
@@ -346,6 +347,7 @@ class Enigma:
       old_char = char
       char = pos_to_letter((
         get_letter_pos(rotor.encrypt(char, turnover)) - rotor.position) % 26)
+      print(old_char, '->', char, 'rotor', i)
       
       if self.callbacks['rotors'][i] is not None:
         cipher = rotor.cipher
@@ -356,6 +358,7 @@ class Enigma:
     if self.rotor4 is not None:
       old_char = char
       char = rotor.encrypt(char)
+      print(old_char, '->', char, 'rotor 3')
       
       if self.callbacks['rotor4'] is not None:
         self.callbacks['rotor4'](old_char, char, self.rotor4.cipher)
@@ -363,6 +366,7 @@ class Enigma:
     # Pass through reflector
     old_char = char
     char = self.reflector.encrypt(char)
+    print(old_char, '->', char, 'reflector')
     
     if self.callbacks['reflector'] is not None:
       self.callbacks['reflector'](old_char, char, self.reflector.cipher)
@@ -371,6 +375,7 @@ class Enigma:
     if self.rotor4 is not None:
       old_char = char
       char = rotor.reverse_encrypt(char)
+      print(old_char, '->', char, 'rotor 3 back')
       
       if self.callbacks['rotor4_back'] is not None:
         self.callbacks['rotor4_back'](old_char, char, self.rotor4.cipher)
@@ -380,6 +385,7 @@ class Enigma:
       old_char = char
       char = rotor.reverse_encrypt(pos_to_letter((get_letter_pos(char)
           + rotor.position) % 26))
+      print(old_char, '->', char, 'rotor', i, 'back')
       
       if self.callbacks['rotors_back'][i] is not None:
         cipher = rotor.cipher
@@ -390,6 +396,8 @@ class Enigma:
     # Run back through plugboard
     old_char = char
     char = self.plugboard.encrypt(char)
+    print(old_char, '->', char, 'plugboard back')
+    print('----')
     
     if self.callbacks['plugboard_back'] is not None:
       self.callbacks['plugboard_back'](old_char, char, self.plugboard.swaps)
