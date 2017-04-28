@@ -686,7 +686,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'A' else (1, 0, 0, 1) if self.parent.char_out == 'A' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'A' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'A' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -696,7 +696,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'B' else (1, 0, 0, 1) if self.parent.char_out == 'B' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'B' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'B' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -706,7 +706,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'C' else (1, 0, 0, 1) if self.parent.char_out == 'C' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'C' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'C' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -716,7 +716,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'D' else (1, 0, 0, 1) if self.parent.char_out == 'D' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'D' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'D' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -726,7 +726,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'E' else (1, 0, 0, 1) if self.parent.char_out == 'E' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'E' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'E' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -736,7 +736,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'F' else (1, 0, 0, 1) if self.parent.char_out == 'F' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'F' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'F' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -746,7 +746,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'G' else (1, 0, 0, 1) if self.parent.char_out == 'G' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'G' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'G' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -756,7 +756,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'H' else (1, 0, 0, 1) if self.parent.char_out == 'H' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'H' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'H' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -766,7 +766,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'I' else (1, 0, 0, 1) if self.parent.char_out == 'I' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'I' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'I' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -776,7 +776,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'J' else (1, 0, 0, 1) if self.parent.char_out == 'J' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'J' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'J' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -786,7 +786,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'K' else (1, 0, 0, 1) if self.parent.char_out == 'K' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'K' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'K' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -796,7 +796,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'L' else (1, 0, 0, 1) if self.parent.char_out == 'L' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'L' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'L' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -806,7 +806,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'M' else (1, 0, 0, 1) if self.parent.char_out == 'M' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'M' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'M' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -816,7 +816,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'N' else (1, 0, 0, 1) if self.parent.char_out == 'N' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'N' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'N' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -826,7 +826,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'O' else (1, 0, 0, 1) if self.parent.char_out == 'O' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'O' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'O' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -836,7 +836,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'P' else (1, 0, 0, 1) if self.parent.char_out == 'P' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'P' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'P' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -846,7 +846,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'Q' else (1, 0, 0, 1) if self.parent.char_out == 'Q' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'Q' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'Q' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -856,7 +856,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'R' else (1, 0, 0, 1) if self.parent.char_out == 'R' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'R' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'R' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -866,7 +866,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'S' else (1, 0, 0, 1) if self.parent.char_out == 'S' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'S' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'S' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -876,7 +876,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'T' else (1, 0, 0, 1) if self.parent.char_out == 'T' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'T' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'T' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -886,7 +886,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'U' else (1, 0, 0, 1) if self.parent.char_out == 'U' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'U' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'U' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -896,7 +896,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'V' else (1, 0, 0, 1) if self.parent.char_out == 'V' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'V' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'V' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -906,7 +906,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'W' else (1, 0, 0, 1) if self.parent.char_out == 'W' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'W' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'W' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -916,7 +916,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'X' else (1, 0, 0, 1) if self.parent.char_out == 'X' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'X' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'X' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -926,7 +926,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'Y' else (1, 0, 0, 1) if self.parent.char_out == 'Y' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'Y' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'Y' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
@@ -936,7 +936,7 @@
     font_size: 10
     canvas:
       Color:
-        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in == 'Z' else (1, 0, 0, 1) if self.parent.char_out == 'Z' else (0.3, 0.3, 0.3, 1)
+        rgba: (0, 0, 0, 0) if self.parent.rotor_num == 2 else (0, 1, 0, 1) if self.parent.char_in and self.parent.cipher[self.parent.char_in] == 'Z' else (1, 0, 0, 1) if self.parent.char_out and self.parent.cipher[self.parent.char_out] == 'Z' else (0.3, 0.3, 0.3, 1)
       Line:
         points: [self.center_x + 7, self.center_y, self.center_x + 190, self.center_y]
   Label:
