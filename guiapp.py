@@ -23,6 +23,17 @@ import ast
 
 import emulator as em
 
+ROTOR_NAMES = {
+  'I': em.ROTOR_I,
+  'II': em.ROTOR_II,
+  'III': em.ROTOR_III,
+  'IV': em.ROTOR_IV,
+  'V': em.ROTOR_V,
+  'VI': em.ROTOR_VI,
+  'VII': em.ROTOR_VII,
+  'VIII': em.ROTOR_VIII
+}
+
 class Rotor(Widget):
   
   cipher = DictProperty({
@@ -59,6 +70,13 @@ class Rotor(Widget):
   def callback_out(self, char_in, char_out, cipher, pos):
     self.char_out = char_out
     self.rotor_pos = pos
+  
+  def update(self):
+    self.char_in = self.char_out = '' # it would look weird when updated
+    self.cipher = {alpha: char for alpha, char in
+                   zip(alphabet, enigma.rotors[self.rotor_num].cipher)}
+    self.rotor_pos = (enigma.rotors[self.rotor_num].position
+                      + enigma.rotors[self.rotor_num].ring_pos)
 
 class Plugboard(Widget):
   
@@ -188,6 +206,48 @@ class EmulatorGui(BoxLayout):
     
     self.plugboard.char_in = ''
     self.plugboard.char_out = ''
+  
+  def update_rotors(self, rotors_str):
+    try:
+      if rotors_str == '':
+        raise ValueError("can't be empty")
+      
+      rotors_tuple = ast.literal_eval(rotors_str)
+      
+      # Make sure it's a 3-tuple
+      if not isinstance(rotors_tuple, tuple) or len(rotors_tuple) != 3:
+        raise ValueError('not a 3-tuple')
+      
+      # Make sure it's all strings
+      if any(not isinstance(rotor, str) for rotor in rotors_tuple):
+        raise ValueError('not all strings')
+      
+      # Make sure they're all rotors
+      if any(rotor not in ROTOR_NAMES for rotor in rotors_tuple):
+        raise ValueError('not all rotors')
+    
+    except ValueError as e:
+      # Highlight the box in red
+      self.ids.rotors_input.background_color = [1, 0.5, 0.5, 1]
+      print('caught:')
+      print(e)
+    
+    else:
+      # Clear any highlighting
+      self.ids.rotors_input.background_color = [1, 1, 1, 1]
+      
+      # Update the rotors in the backend
+      rotors = [ROTOR_NAMES[rotor_name] for rotor_name in rotors_tuple]
+      enigma.rotors = rotors
+      
+      # Update the rotors in the frontend
+      for rotor in [self.rotor0, self.rotor1, self.rotor2]:
+        rotor.update()
+    
+    finally:
+      # Reopen the actual Enigma input
+      self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+      self._keyboard.bind(on_key_down=self._on_keyboard_down)
 
 class EmulatorApp(App):
   

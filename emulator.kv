@@ -42,6 +42,8 @@
       id: reset_btn
     SwapsInput:
       id: swaps_input
+    RotorsInput:
+      id: rotors_input
 
 <PlaintextLabel@Label>:
   size_hint: (1, 0.075)
@@ -73,6 +75,15 @@
   valign: 'middle'
   multiline: False
   on_text_validate: self.parent.parent.ids.plugboard.update_swaps(self.text)
+
+<RotorsInput@TextInput>:
+  font_name: 'RobotoMono-Regular'
+  hint_text: 'Rotors'
+  text: "('III', 'II', 'I')"
+  halign: 'left'
+  valign: 'middle'
+  multiline: False
+  on_text_validate: self.parent.parent.update_rotors(self.text)
 
 <Plugboard>:
   size: 260, 50
