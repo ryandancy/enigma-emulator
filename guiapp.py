@@ -55,9 +55,6 @@ class Rotor(Widget):
   char_in = StringProperty('')
   char_out = StringProperty('')
   
-  def __init__(self, *args, **kwargs):
-    super().__init__(*args, **kwargs)
-  
   def on_rotor_num(self, instance, rotor_num):
     self.cipher.update({alpha: char for alpha, char in
                         zip(alphabet, enigma.rotors[rotor_num].cipher)})
@@ -72,10 +69,16 @@ class Rotor(Widget):
   def callback_in(self, char_in, char_out, cipher, pos):
     self.char_in = char_in
     self.rotor_pos = pos
+    
+    if self.rotor_num == 2:
+      self.reflector.char_in = char_out
   
   def callback_out(self, char_in, char_out, cipher, pos):
     self.char_out = char_out
     self.rotor_pos = pos
+    
+    if self.rotor_num == 2:
+      self.reflector.char_out = char_in
   
   def update(self):
     self.char_in = self.char_out = '' # it would look weird when updated
@@ -83,6 +86,22 @@ class Rotor(Widget):
                    zip(alphabet, enigma.rotors[self.rotor_num].cipher)}
     self.rotor_pos = (enigma.rotors[self.rotor_num].position
                       + enigma.rotors[self.rotor_num].ring_pos)
+
+class Reflector(Widget):
+  
+  cipher = DictProperty({
+    'A': 'A', 'B': 'B', 'C': 'C', 'D': 'D', 'E': 'E', 'F': 'F', 'G': 'G',
+    'H': 'H', 'I': 'I', 'J': 'J', 'K': 'K', 'L': 'L', 'M': 'M', 'N': 'N',
+    'O': 'O', 'P': 'P', 'Q': 'Q', 'R': 'R', 'S': 'S', 'T': 'T', 'U': 'U',
+    'V': 'V', 'W': 'W', 'X': 'X', 'Y': 'Y', 'Z': 'Z'
+  })
+  
+  char_in = StringProperty('')
+  char_out = StringProperty('')
+  
+  def update(self):
+    self.cipher = {alpha: char for alpha, char in
+                   zip(alphabet, enigma.reflector.cipher)}
 
 class Plugboard(Widget):
   
@@ -172,6 +191,8 @@ class EmulatorGui(BoxLayout):
   rotor1 = ObjectProperty(None)
   rotor2 = ObjectProperty(None)
   
+  reflector = ObjectProperty(None)
+  
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
     self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
@@ -199,6 +220,8 @@ class EmulatorGui(BoxLayout):
     self.rotor0.rotor_num = 0
     self.rotor1.rotor_num = 1
     self.rotor2.rotor_num = 2
+    
+    self.reflector.update()
   
   def reset(self):
     enigma.reset()
@@ -212,6 +235,9 @@ class EmulatorGui(BoxLayout):
     
     self.plugboard.char_in = ''
     self.plugboard.char_out = ''
+    
+    self.reflector.char_in = ''
+    self.reflector.char_out = ''
   
   def update_rotors(self, rotors_str):
     try:
@@ -273,7 +299,7 @@ class EmulatorGui(BoxLayout):
       enigma.reflector = reflector
       
       # Update the frontend reflector
-      # TODO a frontend reflector
+      self.reflector.update()
     
     finally:
       # Reopen the actual Enigma input
