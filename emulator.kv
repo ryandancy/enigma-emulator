@@ -247,12 +247,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['A']].center_x, root.ids['pb' + root.swaps['A']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'A' else (1, 0, 0, 1) if self.parent.char_out == 'A' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'A' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'A' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbB_btm
     text: 'B'
@@ -264,12 +271,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['B']].center_x, root.ids['pb' + root.swaps['B']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'B' else (1, 0, 0, 1) if self.parent.char_out == 'B' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'B' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'B' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbC_btm
     text: 'C'
@@ -281,12 +295,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['C']].center_x, root.ids['pb' + root.swaps['C']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'C' else (1, 0, 0, 1) if self.parent.char_out == 'C' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'C' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'C' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbD_btm
     text: 'D'
@@ -298,12 +319,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['D']].center_x, root.ids['pb' + root.swaps['D']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'D' else (1, 0, 0, 1) if self.parent.char_out == 'D' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'D' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'D' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbE_btm
     text: 'E'
@@ -315,12 +343,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['E']].center_x, root.ids['pb' + root.swaps['E']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'E' else (1, 0, 0, 1) if self.parent.char_out == 'E' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'E' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'E' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbF_btm
     text: 'F'
@@ -332,12 +367,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['F']].center_x, root.ids['pb' + root.swaps['F']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'F' else (1, 0, 0, 1) if self.parent.char_out == 'F' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'F' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'F' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbG_btm
     text: 'G'
@@ -349,12 +391,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['G']].center_x, root.ids['pb' + root.swaps['G']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'G' else (1, 0, 0, 1) if self.parent.char_out == 'G' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'G' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'G' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbH_btm
     text: 'H'
@@ -366,12 +415,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['H']].center_x, root.ids['pb' + root.swaps['H']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'H' else (1, 0, 0, 1) if self.parent.char_out == 'H' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'H' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'H' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbI_btm
     text: 'I'
@@ -383,12 +439,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['I']].center_x, root.ids['pb' + root.swaps['I']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'I' else (1, 0, 0, 1) if self.parent.char_out == 'I' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'I' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'I' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbJ_btm
     text: 'J'
@@ -400,12 +463,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['J']].center_x, root.ids['pb' + root.swaps['J']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'J' else (1, 0, 0, 1) if self.parent.char_out == 'J' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'J' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'J' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbK_btm
     text: 'K'
@@ -417,12 +487,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['K']].center_x, root.ids['pb' + root.swaps['K']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'K' else (1, 0, 0, 1) if self.parent.char_out == 'K' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'K' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'K' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbL_btm
     text: 'L'
@@ -434,12 +511,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['L']].center_x, root.ids['pb' + root.swaps['L']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'L' else (1, 0, 0, 1) if self.parent.char_out == 'L' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'L' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'L' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbM_btm
     text: 'M'
@@ -451,12 +535,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['M']].center_x, root.ids['pb' + root.swaps['M']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'M' else (1, 0, 0, 1) if self.parent.char_out == 'M' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'M' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'M' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbN_btm
     text: 'N'
@@ -468,12 +559,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['N']].center_x, root.ids['pb' + root.swaps['N']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'N' else (1, 0, 0, 1) if self.parent.char_out == 'N' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'N' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'N' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbO_btm
     text: 'O'
@@ -485,12 +583,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['O']].center_x, root.ids['pb' + root.swaps['O']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'O' else (1, 0, 0, 1) if self.parent.char_out == 'O' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'O' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'O' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbP_btm
     text: 'P'
@@ -502,12 +607,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['P']].center_x, root.ids['pb' + root.swaps['P']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'P' else (1, 0, 0, 1) if self.parent.char_out == 'P' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'P' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'P' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbQ_btm
     text: 'Q'
@@ -519,12 +631,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Q']].center_x, root.ids['pb' + root.swaps['Q']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'Q' else (1, 0, 0, 1) if self.parent.char_out == 'Q' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'Q' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'Q' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbR_btm
     text: 'R'
@@ -536,12 +655,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['R']].center_x, root.ids['pb' + root.swaps['R']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'R' else (1, 0, 0, 1) if self.parent.char_out == 'R' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'R' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'R' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbS_btm
     text: 'S'
@@ -553,12 +679,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['S']].center_x, root.ids['pb' + root.swaps['S']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'S' else (1, 0, 0, 1) if self.parent.char_out == 'S' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'S' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'S' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbT_btm
     text: 'T'
@@ -570,12 +703,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['T']].center_x, root.ids['pb' + root.swaps['T']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'T' else (1, 0, 0, 1) if self.parent.char_out == 'T' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'T' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'T' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbU_btm
     text: 'U'
@@ -587,12 +727,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['U']].center_x, root.ids['pb' + root.swaps['U']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'U' else (1, 0, 0, 1) if self.parent.char_out == 'U' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'U' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'U' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbV_btm
     text: 'V'
@@ -604,12 +751,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['V']].center_x, root.ids['pb' + root.swaps['V']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'V' else (1, 0, 0, 1) if self.parent.char_out == 'V' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'V' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'V' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbW_btm
     text: 'W'
@@ -621,12 +775,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['W']].center_x, root.ids['pb' + root.swaps['W']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'W' else (1, 0, 0, 1) if self.parent.char_out == 'W' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'W' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'W' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbX_btm
     text: 'X'
@@ -638,12 +799,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['X']].center_x, root.ids['pb' + root.swaps['X']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'X' else (1, 0, 0, 1) if self.parent.char_out == 'X' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'X' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'X' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbY_btm
     text: 'Y'
@@ -655,12 +823,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Y']].center_x, root.ids['pb' + root.swaps['Y']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'Y' else (1, 0, 0, 1) if self.parent.char_out == 'Y' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'Y' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'Y' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
   Label:
     id: pbZ_btm
     text: 'Z'
@@ -672,12 +847,19 @@
       Line:
         points: [self.center_x, self.center_y + 7, root.ids['pb' + root.swaps['Z']].center_x, root.ids['pb' + root.swaps['Z']].center_y - 7]
       Color:
-        rgba: (0, 1, 0, 1) if self.parent.char_in == 'Z' else (1, 0, 0, 1) if self.parent.char_out == 'Z' else (0, 0, 0, 0)
+        rgba: (0, 1, 0, 1) if self.parent.char_in == 'Z' else (0, 0, 0, 0)
       Triangle:
         points: [self.center_x, self.center_y - 6, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
       Rectangle:
-        pos: [self.center_x - 2, self.center_y - 16]
+        pos: [self.center_x - 2, self.center_y - 17]
+        size: [4, 7]
+      Color:
+        rgba: (1, 0, 0, 1) if self.parent.char_out == 'Z' else (0, 0, 0, 0)
+      Rectangle:
+        pos: [self.center_x - 2, self.center_y - 12]
         size: [4, 6]
+      Triangle:
+        points: [self.center_x, self.center_y - 18, self.center_x - 4, self.center_y - 12, self.center_x + 4, self.center_y - 12]
 
 <Rotor>:
   size: 50, 260
