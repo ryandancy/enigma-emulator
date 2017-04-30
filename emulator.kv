@@ -11,6 +11,8 @@
   reflector: reflector
   
   orientation: 'vertical'
+  spacing: 20
+  padding: [5, 10]
   
   Label:
     text: 'Enigma Emulator'
@@ -18,20 +20,18 @@
   RelativeLayout:
     Rotor:
       size_hint: (None, None)
-      pos_hint: {'x': 0.1, 'y': 0.3}
+      pos_hint: {'x': 0.29, 'y': 0.2}
       id: rotor0
     Rotor:
       size_hint: (None, None)
-      pos_hint: {'x': 0.4, 'y': 0.3}
+      pos_hint: {'x': 0.53, 'y': 0.2}
       id: rotor1
     Rotor:
       size_hint: (None, None)
-      pos_hint: {'x': 0.7, 'y': 0.3}
+      pos_hint: {'x': 0.77, 'y': 0.2}
       id: rotor2
       reflector: reflector
     Reflector:
-      size_hint: (None, None)
-      pos_hint: {'x': 0.8, 'y': 0.3}
       id: reflector
     Plugboard:
       size_hint: (None, None)

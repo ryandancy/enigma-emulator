@@ -8,6 +8,10 @@ This module provides a GUI for the Enigma emulator in emulator.py. Uses Kivy.
 import kivy
 kivy.require('1.9.1')
 
+from kivy.config import Config
+Config.set('graphics', 'width', '1000')
+Config.set('graphics', 'height', '650')
+
 from kivy.app import App
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
