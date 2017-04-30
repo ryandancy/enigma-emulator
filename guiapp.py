@@ -191,6 +191,8 @@ class EmulatorGui(BoxLayout):
   
   gui = ObjectProperty(None)
   
+  plugboard = ObjectProperty(None)
+  
   rotor0 = ObjectProperty(None)
   rotor1 = ObjectProperty(None)
   rotor2 = ObjectProperty(None)

@@ -37,6 +37,8 @@
       size_hint: (None, None)
       pos_hint: {'x': 0, 'y': 0}
       id: plugboard
+    PlugboardToRotorsConnection:
+      id: pb2r
   PlaintextLabel:
     id: plaintext
   CiphertextLabel:
@@ -1307,3 +1309,110 @@
       rgb: (0, 1, 0) if self.char_in == 'Z' else (1, 0, 0) if self.char_out == 'Z' else (0.3, 0.3, 0.3)
     Line
       points: [self.parent.parent.ids.rotor2.ids.rrZ.center_x + 7, self.parent.parent.ids.rotor2.ids.rrZ.center_y, self.parent.parent.ids.rotor2.ids.rrZ.center_x + 57, (self.parent.parent.ids.rotor2.ids.rrZ.center_y + self.parent.parent.ids.rotor2.ids['rr' + self.cipher['Z']].center_y) // 2]
+
+<PlugboardToRotorsConnection@Widget>:
+  canvas:
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'A' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'A' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbA.center_x, self.parent.parent.ids.plugboard.ids.pbA.center_y + 7, self.parent.parent.ids.rotor0.ids.rlA.center_x - 7, self.parent.parent.ids.rotor0.ids.rlA.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'B' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'B' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbB.center_x, self.parent.parent.ids.plugboard.ids.pbB.center_y + 7, self.parent.parent.ids.rotor0.ids.rlB.center_x - 7, self.parent.parent.ids.rotor0.ids.rlB.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'C' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'C' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbC.center_x, self.parent.parent.ids.plugboard.ids.pbC.center_y + 7, self.parent.parent.ids.rotor0.ids.rlC.center_x - 7, self.parent.parent.ids.rotor0.ids.rlC.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'D' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'D' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbD.center_x, self.parent.parent.ids.plugboard.ids.pbD.center_y + 7, self.parent.parent.ids.rotor0.ids.rlD.center_x - 7, self.parent.parent.ids.rotor0.ids.rlD.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'E' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'E' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbE.center_x, self.parent.parent.ids.plugboard.ids.pbE.center_y + 7, self.parent.parent.ids.rotor0.ids.rlE.center_x - 7, self.parent.parent.ids.rotor0.ids.rlE.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'F' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'F' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbF.center_x, self.parent.parent.ids.plugboard.ids.pbF.center_y + 7, self.parent.parent.ids.rotor0.ids.rlF.center_x - 7, self.parent.parent.ids.rotor0.ids.rlF.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'G' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'G' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbG.center_x, self.parent.parent.ids.plugboard.ids.pbG.center_y + 7, self.parent.parent.ids.rotor0.ids.rlG.center_x - 7, self.parent.parent.ids.rotor0.ids.rlG.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'H' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'H' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbH.center_x, self.parent.parent.ids.plugboard.ids.pbH.center_y + 7, self.parent.parent.ids.rotor0.ids.rlH.center_x - 7, self.parent.parent.ids.rotor0.ids.rlH.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'I' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'I' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbI.center_x, self.parent.parent.ids.plugboard.ids.pbI.center_y + 7, self.parent.parent.ids.rotor0.ids.rlI.center_x - 7, self.parent.parent.ids.rotor0.ids.rlI.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'J' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'J' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbJ.center_x, self.parent.parent.ids.plugboard.ids.pbJ.center_y + 7, self.parent.parent.ids.rotor0.ids.rlJ.center_x - 7, self.parent.parent.ids.rotor0.ids.rlJ.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'K' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'K' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbK.center_x, self.parent.parent.ids.plugboard.ids.pbK.center_y + 7, self.parent.parent.ids.rotor0.ids.rlK.center_x - 7, self.parent.parent.ids.rotor0.ids.rlK.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'L' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'L' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbL.center_x, self.parent.parent.ids.plugboard.ids.pbL.center_y + 7, self.parent.parent.ids.rotor0.ids.rlL.center_x - 7, self.parent.parent.ids.rotor0.ids.rlL.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'M' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'M' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbM.center_x, self.parent.parent.ids.plugboard.ids.pbM.center_y + 7, self.parent.parent.ids.rotor0.ids.rlM.center_x - 7, self.parent.parent.ids.rotor0.ids.rlM.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'N' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'N' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbN.center_x, self.parent.parent.ids.plugboard.ids.pbN.center_y + 7, self.parent.parent.ids.rotor0.ids.rlN.center_x - 7, self.parent.parent.ids.rotor0.ids.rlN.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'O' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'O' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbO.center_x, self.parent.parent.ids.plugboard.ids.pbO.center_y + 7, self.parent.parent.ids.rotor0.ids.rlO.center_x - 7, self.parent.parent.ids.rotor0.ids.rlO.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'P' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'P' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbP.center_x, self.parent.parent.ids.plugboard.ids.pbP.center_y + 7, self.parent.parent.ids.rotor0.ids.rlP.center_x - 7, self.parent.parent.ids.rotor0.ids.rlP.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'Q' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'Q' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbQ.center_x, self.parent.parent.ids.plugboard.ids.pbQ.center_y + 7, self.parent.parent.ids.rotor0.ids.rlQ.center_x - 7, self.parent.parent.ids.rotor0.ids.rlQ.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'R' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'R' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbR.center_x, self.parent.parent.ids.plugboard.ids.pbR.center_y + 7, self.parent.parent.ids.rotor0.ids.rlR.center_x - 7, self.parent.parent.ids.rotor0.ids.rlR.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'S' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'S' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbS.center_x, self.parent.parent.ids.plugboard.ids.pbS.center_y + 7, self.parent.parent.ids.rotor0.ids.rlS.center_x - 7, self.parent.parent.ids.rotor0.ids.rlS.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'T' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'T' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbT.center_x, self.parent.parent.ids.plugboard.ids.pbT.center_y + 7, self.parent.parent.ids.rotor0.ids.rlT.center_x - 7, self.parent.parent.ids.rotor0.ids.rlT.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'U' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'U' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbU.center_x, self.parent.parent.ids.plugboard.ids.pbU.center_y + 7, self.parent.parent.ids.rotor0.ids.rlU.center_x - 7, self.parent.parent.ids.rotor0.ids.rlU.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'V' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'V' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbV.center_x, self.parent.parent.ids.plugboard.ids.pbV.center_y + 7, self.parent.parent.ids.rotor0.ids.rlV.center_x - 7, self.parent.parent.ids.rotor0.ids.rlV.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'W' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'W' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbW.center_x, self.parent.parent.ids.plugboard.ids.pbW.center_y + 7, self.parent.parent.ids.rotor0.ids.rlW.center_x - 7, self.parent.parent.ids.rotor0.ids.rlW.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'X' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'X' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbX.center_x, self.parent.parent.ids.plugboard.ids.pbX.center_y + 7, self.parent.parent.ids.rotor0.ids.rlX.center_x - 7, self.parent.parent.ids.rotor0.ids.rlX.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'Y' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'Y' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbY.center_x, self.parent.parent.ids.plugboard.ids.pbY.center_y + 7, self.parent.parent.ids.rotor0.ids.rlY.center_x - 7, self.parent.parent.ids.rotor0.ids.rlY.center_y]
+    Color:
+      rgb: (0, 1, 0) if self.parent.parent.ids.plugboard.char_in and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_in] == 'Z' else (1, 0, 0) if self.parent.parent.ids.plugboard.char_out and self.parent.parent.ids.plugboard.swaps[self.parent.parent.ids.plugboard.char_out] == 'Z' else (0.3, 0.3, 0.3)
+    Line:
+      points: [self.parent.parent.ids.plugboard.ids.pbZ.center_x, self.parent.parent.ids.plugboard.ids.pbZ.center_y + 7, self.parent.parent.ids.rotor0.ids.rlZ.center_x - 7, self.parent.parent.ids.rotor0.ids.rlZ.center_y]
