@@ -18,7 +18,7 @@ from kivy.uix.widget import Widget
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import DictProperty, ObjectProperty, NumericProperty, \
-  StringProperty
+  StringProperty, ListProperty
 from kivy.graphics import Color, Triangle, Rectangle, Line
 from kivy.clock import Clock
 
@@ -199,6 +199,8 @@ class EmulatorGui(BoxLayout):
   
   reflector = ObjectProperty(None)
   
+  base_positions = ListProperty([0, 0, 0])
+  
   def __init__(self, *args, **kwargs):
     super().__init__(*args, **kwargs)
     self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
@@ -234,8 +236,8 @@ class EmulatorGui(BoxLayout):
     self.ids.plaintext.text = 'plaintext: '
     self.ids.ciphertext.text = 'ciphertext: '
     
-    for rotor in [self.rotor0, self.rotor1, self.rotor2]:
-      rotor.rotor_pos = 0
+    for i, rotor in enumerate([self.rotor0, self.rotor1, self.rotor2]):
+      rotor.rotor_pos = self.base_positions[i]
       rotor.char_in = ''
       rotor.char_out = ''
     
@@ -306,6 +308,50 @@ class EmulatorGui(BoxLayout):
       
       # Update the frontend reflector
       self.reflector.update()
+    
+    finally:
+      # Reopen the actual Enigma input
+      self._keyboard = Window.request_keyboard(self._keyboard_closed, self)
+      self._keyboard.bind(on_key_down=self._on_keyboard_down)
+  
+  def update_positions(self, positions_str):
+    try:
+      if positions_str == '':
+        raise ValueError("can't be empty")
+      
+      pos_tuple = ast.literal_eval(positions_str)
+      
+      # Make sure it's a 3-tuple
+      if not isinstance(pos_tuple, tuple) or len(pos_tuple) != 3:
+        raise ValueError('not a 3-tuple')
+      
+      # Make sure it's all chars
+      if not all(isinstance(pos, str) and len(pos) == 1
+                 for pos in pos_tuple):
+        raise ValueError('not all chars')
+    
+    except ValueError as e:
+      # Highlight the box in red
+      self.ids.positions_input.background_color = [1, 0.5, 0.5, 1]
+      print('caught:')
+      print(e)
+    
+    else:
+      # Clear any highlighting
+      self.ids.positions_input.background_color = [1, 1, 1, 1]
+      
+      # Translate into numbers
+      pos_nums = list(map(em.get_letter_pos, pos_tuple))
+      
+      # Update the rotors' positions on the backend
+      for rotor, pos in zip(enigma.rotors, pos_nums):
+        rotor.position = pos
+      
+      # Update the rotors' positions on the frontend
+      for rotor in [self.rotor0, self.rotor1, self.rotor2]:
+        rotor.update()
+      
+      self.base_positions = pos_nums
     
     finally:
       # Reopen the actual Enigma input

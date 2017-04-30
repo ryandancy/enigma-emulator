@@ -54,6 +54,8 @@
       id: rotors_input
     ReflectorInput:
       id: reflector_input
+    RotorPositionsInput:
+      id: positions_input
 
 <PlaintextLabel@Label>:
   size_hint: (1, 0.075)
@@ -103,6 +105,15 @@
   valign: 'middle'
   multiline: False
   on_text_validate: self.parent.parent.update_reflector(self.text)
+
+<RotorPositionsInput@TextInput>:
+  font_name: 'RobotoMono-Regular'
+  hint_text: 'Rotor Positions'
+  text: "'A', 'A', 'A'"
+  halign: 'left'
+  valign: 'middle'
+  multiline: False
+  on_text_validate: self.parent.parent.update_positions(self.text)
 
 <Plugboard>:
   size: 260, 50
